@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,86 +7,81 @@
     android:orientation="vertical"
     tools:context=".login.LoginActivity">
 
-    <Space
-        android:id="@+id/loginActivityTopSpacing"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="4"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginActivitySignUpButton"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/secondary_color_background"
-        android:layout_margin="16dp"
-        android:text="@string/sign_up"
-        android:textAllCaps="false"
-        android:layout_gravity="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:backgroundTint="@color/secondary_color"/>
-
-    <Space
-        android:id="@+id/loginActivityMiddleSpacing"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="2"/>
-
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/loginActivityEditTextTextPersonName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autofillHints="username"
-            android:background="@drawable/primary_color_background"
-            android:ems="10"
-            android:layout_margin="16dp"
-            android:hint="@string/username"
-            android:inputType="textPersonName"
-            android:layout_gravity="center"
-            android:paddingHorizontal="5dp"
-            android:paddingVertical="15dp"
-            android:textSize="24sp"/>
-
-        <EditText
-            android:id="@+id/loginActivityEditTextTextPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autofillHints="password"
-            android:background="@drawable/primary_color_background"
-            android:ems="10"
-            android:layout_margin="16dp"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:layout_gravity="center"
-            android:paddingHorizontal="5dp"
-            android:paddingVertical="15dp"
-            android:textSize="24sp" />
+        android:orientation="vertical"
+        android:layout_gravity="center">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/loginActivityLogInButton"
+            android:id="@+id/loginActivitySignUpButton"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:background="@drawable/secondary_color_background"
             android:layout_margin="16dp"
-            android:layout_gravity="center"
-            android:text="@string/login"
+            android:text="@string/sign_up"
             android:textAllCaps="false"
+            android:layout_gravity="center"
             android:textColor="@color/black"
             android:textSize="24sp"
-            app:backgroundTint="@color/secondary_color" />
+            app:backgroundTint="@color/secondary_color"/>
+
+        <Space
+            android:id="@+id/loginActivityMiddleSpacing"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/loginActivityEditTextPersonName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints="username"
+                android:background="@drawable/primary_color_background"
+                android:ems="10"
+                android:layout_margin="16dp"
+                android:hint="@string/username"
+                android:inputType="textPersonName"
+                android:layout_gravity="center"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="15dp"
+                android:textSize="24sp"/>
+
+            <EditText
+                android:id="@+id/loginActivityEditTextPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints="password"
+                android:background="@drawable/primary_color_background"
+                android:ems="10"
+                android:layout_margin="16dp"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:layout_gravity="center"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="15dp"
+                android:textSize="24sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/loginActivityLoginButton"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/secondary_color_background"
+                android:layout_margin="16dp"
+                android:layout_gravity="center"
+                android:text="@string/login"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:backgroundTint="@color/secondary_color" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <Space
-        android:id="@+id/loginActivityBottomSpacing"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="4"/>
-
-</LinearLayout>
+</ScrollView>
