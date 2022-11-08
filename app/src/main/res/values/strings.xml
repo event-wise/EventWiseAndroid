@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">EventWise</string>
+    <string name="group_name">Group Name</string>
+    <string name="group_description">Group Description</string>
+    <string name="group_location">Group Location</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="event_time">Event Time</string>
+    <string name="event_location">Event Location</string>
+    <string name="event_description">Event Description</string>
+    <string name="event_name">Event Name</string>
 </resources>
