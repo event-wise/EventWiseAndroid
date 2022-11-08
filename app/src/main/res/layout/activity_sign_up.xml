@@ -123,14 +123,14 @@
                 android:id="@+id/loginActivityCancelButton"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/secondary_color_background"
+                android:background="@drawable/secondary_color_light_background"
                 android:layout_margin="8dp"
                 android:layout_gravity="center"
                 android:text="@string/cancel"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="24sp"
-                app:backgroundTint="@color/secondary_color" />
+                app:backgroundTint="@color/secondary_color_light" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/loginActivitySignUpButton"
