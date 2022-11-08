@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fillViewport="true"
     tools:context=".login.LoginActivity">
 
     <LinearLayout
@@ -12,6 +13,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/loginActivitySignUpButton"
@@ -27,9 +33,9 @@
             app:backgroundTint="@color/secondary_color"/>
 
         <Space
-            android:id="@+id/loginActivityMiddleSpacing"
             android:layout_width="wrap_content"
-            android:layout_height="100dp" />
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -81,6 +87,11 @@
                 app:backgroundTint="@color/secondary_color" />
 
         </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2" />
 
     </LinearLayout>
 
