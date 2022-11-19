@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         android:orientation="vertical">
 
         <Space
@@ -21,100 +21,136 @@
             android:layout_weight="2" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/signUpActivityEditTextUsername"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints="username"
-                android:background="@drawable/text_field_background"
-                android:ems="10"
-                android:layout_margin="@dimen/margin_medium"
-                android:hint="@string/username"
-                android:inputType="textPersonName"
-                android:layout_gravity="center"
-                android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
-                android:paddingVertical="@dimen/form_text_field_padding_vertical"
-                android:textSize="@dimen/text_size_medium"/>
+                android:layout_marginHorizontal="@dimen/margin_xlarge"
+                android:hint="@string/username">
 
-            <EditText
-                android:id="@+id/signUpActivityEditTextEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autofillHints="emailAddress"
-                android:background="@drawable/text_field_background"
-                android:ems="10"
-                android:layout_margin="@dimen/margin_medium"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                android:layout_gravity="center"
-                android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
-                android:paddingVertical="@dimen/form_text_field_padding_vertical"
-                android:textSize="@dimen/text_size_medium" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signUpActivityEditTextUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="username"
+                    android:background="@drawable/text_field_background"
+                    android:layout_margin="@dimen/margin_small"
+                    android:inputType="textPersonName"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                    android:paddingTop="@dimen/form_text_field_padding_vertical"
+                    android:textSize="@dimen/text_size_medium"/>
 
-            <EditText
-                android:id="@+id/signUpActivityEditTextDisplayedName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autofillHints="username"
-                android:background="@drawable/text_field_background"
-                android:ems="10"
-                android:layout_margin="@dimen/margin_medium"
-                android:hint="@string/displayed_name"
-                android:inputType="textPersonName"
-                android:layout_gravity="center"
-                android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
-                android:paddingVertical="@dimen/form_text_field_padding_vertical"
-                android:textSize="@dimen/text_size_medium"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/signUpActivityEditTextLocation"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:importantForAutofill="no"
-                android:background="@drawable/text_field_background"
-                android:ems="10"
-                android:layout_margin="@dimen/margin_medium"
-                android:hint="@string/location"
-                android:inputType="text"
-                android:layout_gravity="center"
-                android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
-                android:paddingVertical="@dimen/form_text_field_padding_vertical"
-                android:textSize="@dimen/text_size_medium" />
+                android:layout_marginHorizontal="@dimen/margin_xlarge"
+                android:hint="@string/email">
 
-            <EditText
-                android:id="@+id/signUpActivityEditTextPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autofillHints="password"
-                android:background="@drawable/text_field_background"
-                android:ems="10"
-                android:layout_margin="@dimen/margin_medium"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:layout_gravity="center"
-                android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
-                android:paddingVertical="@dimen/form_text_field_padding_vertical"
-                android:textSize="@dimen/text_size_medium"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signUpActivityEditTextEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="emailAddress"
+                    android:background="@drawable/text_field_background"
+                    android:layout_margin="@dimen/margin_small"
+                    android:inputType="textEmailAddress"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                    android:paddingTop="@dimen/form_text_field_padding_vertical"
+                    android:textSize="@dimen/text_size_medium" />
 
-            <EditText
-                android:id="@+id/signUpActivityEditTextPasswordConfirmation"
-                android:layout_width="wrap_content"
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints="password"
-                android:background="@drawable/text_field_background"
-                android:ems="10"
-                android:layout_margin="@dimen/margin_medium"
-                android:hint="@string/password_confirmation"
-                android:inputType="textPassword"
-                android:layout_gravity="center"
-                android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
-                android:paddingVertical="@dimen/form_text_field_padding_vertical"
-                android:textSize="@dimen/text_size_medium" />
+                android:layout_marginHorizontal="@dimen/margin_xlarge"
+                android:hint="@string/displayed_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signUpActivityEditTextDisplayedName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="username"
+                    android:background="@drawable/text_field_background"
+                    android:layout_margin="@dimen/margin_small"
+                    android:inputType="textPersonName"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                    android:paddingTop="@dimen/form_text_field_padding_vertical"
+                    android:textSize="@dimen/text_size_medium"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_xlarge"
+                android:hint="@string/location">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signUpActivityEditTextLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:background="@drawable/text_field_background"
+                    android:layout_margin="@dimen/margin_small"
+                    android:inputType="text"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                    android:paddingTop="@dimen/form_text_field_padding_vertical"
+                    android:textSize="@dimen/text_size_medium"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_xlarge"
+                android:hint="@string/password">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signUpActivityEditTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="password"
+                    android:background="@drawable/text_field_background"
+                    android:layout_margin="@dimen/margin_small"
+                    android:inputType="textPassword"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                    android:paddingTop="@dimen/form_text_field_padding_vertical"
+                    android:textSize="@dimen/text_size_medium"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_xlarge"
+                android:hint="@string/password_confirmation">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signUpActivityEditTextPasswordConfirmation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="password"
+                    android:background="@drawable/text_field_background"
+                    android:layout_margin="@dimen/margin_small"
+                    android:inputType="textPassword"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                    android:paddingTop="@dimen/form_text_field_padding_vertical"
+                    android:textSize="@dimen/text_size_medium" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
@@ -134,7 +170,7 @@
                 android:layout_width="@dimen/form_button_width"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_background"
-                android:layout_margin="@dimen/margin_medium"
+                android:layout_margin="@dimen/margin_small"
                 android:layout_gravity="center"
                 android:text="@string/cancel"
                 android:textAllCaps="false"
@@ -147,7 +183,7 @@
                 android:layout_width="@dimen/form_button_width"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_background"
-                android:layout_margin="@dimen/margin_medium"
+                android:layout_margin="@dimen/margin_small"
                 android:layout_gravity="center"
                 android:text="@string/sign_up"
                 android:textAllCaps="false"
