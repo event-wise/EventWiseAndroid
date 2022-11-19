@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fillViewport="true"
-    android:background="@color/primary_color_scale1"
     tools:context=".signup.SignUpActivity">
 
     <LinearLayout
