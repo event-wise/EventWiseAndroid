@@ -26,65 +26,89 @@
             android:layout_gravity="center_horizontal"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/createEventActivityEditTextEventName"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:importantForAutofill="no"
-                android:background="@drawable/text_field_background"
-                android:ems="10"
-                android:layout_margin="@dimen/margin_medium"
-                android:hint="@string/event_name"
-                android:inputType="text"
-                android:layout_gravity="center"
-                android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
-                android:paddingVertical="@dimen/form_text_field_padding_vertical"
-                android:textSize="@dimen/text_size_medium"/>
+                android:layout_marginHorizontal="@dimen/margin_xlarge"
+                android:hint="@string/event_name" >
 
-            <EditText
-                android:id="@+id/createEventActivityEditTextEventDateTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:importantForAutofill="no"
-                android:background="@drawable/text_field_background"
-                android:ems="10"
-                android:layout_margin="@dimen/margin_medium"
-                android:hint="@string/event_time"
-                android:inputType="datetime"
-                android:layout_gravity="center"
-                android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
-                android:paddingVertical="@dimen/form_text_field_padding_vertical"
-                android:textSize="@dimen/text_size_medium"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/createEventActivityEditTextEventName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:background="@drawable/text_field_background"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:inputType="text"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                    android:paddingTop="@dimen/form_text_field_padding_vertical"
+                    android:textSize="@dimen/text_size_medium"/>
 
-            <EditText
-                android:id="@+id/createEventActivityEditTextEventLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:importantForAutofill="no"
-                android:background="@drawable/text_field_background"
-                android:ems="10"
-                android:layout_margin="@dimen/margin_medium"
-                android:hint="@string/event_location"
-                android:inputType="text"
-                android:layout_gravity="center"
-                android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
-                android:paddingVertical="@dimen/form_text_field_padding_vertical"
-                android:textSize="@dimen/text_size_medium" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/createEventActivityEditTextEventDescription"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:importantForAutofill="no"
-                android:background="@drawable/text_field_background"
-                android:ems="10"
-                android:layout_margin="@dimen/margin_medium"
-                android:hint="@string/event_description"
-                android:inputType="textLongMessage"
-                android:layout_gravity="center"
-                android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
-                android:paddingVertical="@dimen/form_text_field_padding_vertical"
-                android:textSize="@dimen/text_size_medium" />
+                android:layout_marginHorizontal="@dimen/margin_xlarge"
+                android:hint="@string/event_time" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/createEventActivityEditTextEventDateTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:background="@drawable/text_field_background"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:inputType="datetime"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                    android:paddingTop="@dimen/form_text_field_padding_vertical"
+                    android:textSize="@dimen/text_size_medium"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_xlarge"
+                android:hint="@string/event_location" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/createEventActivityEditTextEventLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:background="@drawable/text_field_background"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:inputType="text"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                    android:paddingTop="@dimen/form_text_field_padding_vertical"
+                    android:textSize="@dimen/text_size_medium"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_xlarge"
+                android:hint="@string/event_description" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/createEventActivityEditTextEventDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:background="@drawable/text_field_background"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:inputType="textLongMessage"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                    android:paddingTop="@dimen/form_text_field_padding_vertical"
+                    android:textSize="@dimen/text_size_medium"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
