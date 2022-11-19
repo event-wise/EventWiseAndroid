@@ -10,4 +10,5 @@
     <string name="event_description">Event Description</string>
     <string name="event_name">Event Name</string>
     <string name="delete_event">Delete Event</string>
+    <string name="event_type">Event Type</string>
 </resources>

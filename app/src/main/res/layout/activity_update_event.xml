@@ -9,7 +9,6 @@
     android:background="@color/primary_color_scale1"
     tools:context=".updateevent.UpdateEventActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:importantForAutofill="no"
                     android:background="@drawable/text_field_background"
-                    android:layout_margin="@dimen/margin_medium"
+                    android:layout_margin="@dimen/margin_small"
                     android:inputType="text"
                     android:layout_gravity="center"
                     android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
@@ -59,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:importantForAutofill="no"
                     android:background="@drawable/text_field_background"
-                    android:layout_margin="@dimen/margin_medium"
+                    android:layout_margin="@dimen/margin_small"
                     android:inputType="datetime"
                     android:layout_gravity="center"
                     android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
@@ -80,12 +79,36 @@
                     android:layout_height="wrap_content"
                     android:importantForAutofill="no"
                     android:background="@drawable/text_field_background"
-                    android:layout_margin="@dimen/margin_medium"
+                    android:layout_margin="@dimen/margin_small"
                     android:inputType="text"
                     android:layout_gravity="center"
                     android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
                     android:paddingTop="@dimen/form_text_field_padding_vertical"
                     android:textSize="@dimen/text_size_medium"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/updateEventActivityEditTextEventTypeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_xlarge"
+                android:hint="@string/event_type" >
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/updateEventActivityEditTextEventType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:background="@drawable/text_field_background"
+                    android:layout_margin="@dimen/margin_small"
+                    android:inputType="none"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="15dp"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="@dimen/text_size_medium" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:importantForAutofill="no"
                     android:background="@drawable/text_field_background"
-                    android:layout_margin="@dimen/margin_medium"
+                    android:layout_margin="@dimen/margin_small"
                     android:inputType="textLongMessage"
                     android:layout_gravity="center"
                     android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
@@ -115,7 +138,7 @@
                 android:layout_width="@dimen/form_button_width"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_background"
-                android:layout_margin="@dimen/margin_medium"
+                android:layout_margin="@dimen/margin_small"
                 android:layout_gravity="center"
                 android:text="@string/delete_event"
                 android:textAllCaps="false"
@@ -141,7 +164,7 @@
                 android:layout_width="@dimen/form_button_width"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_background"
-                android:layout_margin="@dimen/margin_medium"
+                android:layout_margin="@dimen/margin_small"
                 android:layout_gravity="center"
                 android:text="@string/cancel"
                 android:textAllCaps="false"
@@ -154,7 +177,7 @@
                 android:layout_width="@dimen/form_button_width"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_background"
-                android:layout_margin="@dimen/margin_medium"
+                android:layout_margin="@dimen/margin_small"
                 android:layout_gravity="center"
                 android:text="@string/save"
                 android:textAllCaps="false"
