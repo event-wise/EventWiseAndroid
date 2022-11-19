@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fillViewport="true"
+    android:background="@color/primary_color_scale1"
     tools:context=".signup.SignUpActivity">
 
     <LinearLayout
@@ -16,7 +17,7 @@
 
         <Space
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/no_size"
             android:layout_weight="2" />
 
         <LinearLayout
@@ -30,97 +31,97 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:autofillHints="username"
-                android:background="@drawable/primary_color_background"
+                android:background="@drawable/text_field_background"
                 android:ems="10"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/margin_medium"
                 android:hint="@string/username"
                 android:inputType="textPersonName"
                 android:layout_gravity="center"
-                android:paddingHorizontal="5dp"
-                android:paddingVertical="15dp"
-                android:textSize="24sp"/>
+                android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                android:paddingVertical="@dimen/form_text_field_padding_vertical"
+                android:textSize="@dimen/text_size_medium"/>
 
             <EditText
                 android:id="@+id/signUpActivityEditTextEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:autofillHints="emailAddress"
-                android:background="@drawable/primary_color_background"
+                android:background="@drawable/text_field_background"
                 android:ems="10"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/margin_medium"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:layout_gravity="center"
-                android:paddingHorizontal="5dp"
-                android:paddingVertical="15dp"
-                android:textSize="24sp" />
+                android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                android:paddingVertical="@dimen/form_text_field_padding_vertical"
+                android:textSize="@dimen/text_size_medium" />
 
             <EditText
                 android:id="@+id/signUpActivityEditTextDisplayedName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:autofillHints="username"
-                android:background="@drawable/primary_color_background"
+                android:background="@drawable/text_field_background"
                 android:ems="10"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/margin_medium"
                 android:hint="@string/displayed_name"
                 android:inputType="textPersonName"
                 android:layout_gravity="center"
-                android:paddingHorizontal="5dp"
-                android:paddingVertical="15dp"
-                android:textSize="24sp"/>
+                android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                android:paddingVertical="@dimen/form_text_field_padding_vertical"
+                android:textSize="@dimen/text_size_medium"/>
 
             <EditText
                 android:id="@+id/signUpActivityEditTextLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:importantForAutofill="no"
-                android:background="@drawable/primary_color_background"
+                android:background="@drawable/text_field_background"
                 android:ems="10"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/margin_medium"
                 android:hint="@string/location"
                 android:inputType="text"
                 android:layout_gravity="center"
-                android:paddingHorizontal="5dp"
-                android:paddingVertical="15dp"
-                android:textSize="24sp" />
+                android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                android:paddingVertical="@dimen/form_text_field_padding_vertical"
+                android:textSize="@dimen/text_size_medium" />
 
             <EditText
                 android:id="@+id/signUpActivityEditTextPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:autofillHints="password"
-                android:background="@drawable/primary_color_background"
+                android:background="@drawable/text_field_background"
                 android:ems="10"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/margin_medium"
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:layout_gravity="center"
-                android:paddingHorizontal="5dp"
-                android:paddingVertical="15dp"
-                android:textSize="24sp"/>
+                android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                android:paddingVertical="@dimen/form_text_field_padding_vertical"
+                android:textSize="@dimen/text_size_medium"/>
 
             <EditText
                 android:id="@+id/signUpActivityEditTextPasswordConfirmation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:autofillHints="password"
-                android:background="@drawable/primary_color_background"
+                android:background="@drawable/text_field_background"
                 android:ems="10"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/margin_medium"
                 android:hint="@string/password_confirmation"
                 android:inputType="textPassword"
                 android:layout_gravity="center"
-                android:paddingHorizontal="5dp"
-                android:paddingVertical="15dp"
-                android:textSize="24sp" />
+                android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                android:paddingVertical="@dimen/form_text_field_padding_vertical"
+                android:textSize="@dimen/text_size_medium" />
 
         </LinearLayout>
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="3" />
+            android:layout_weight="2" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -132,34 +133,34 @@
                 android:id="@+id/loginActivityCancelButton"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/secondary_color_light_background"
+                android:background="@drawable/button_background"
                 android:layout_margin="8dp"
                 android:layout_gravity="center"
                 android:text="@string/cancel"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="24sp"
-                app:backgroundTint="@color/secondary_color_light" />
+                app:backgroundTint="@color/secondary_color_scale2" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/loginActivitySignUpButton"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/secondary_color_background"
+                android:background="@drawable/button_background"
                 android:layout_margin="8dp"
                 android:layout_gravity="center"
                 android:text="@string/sign_up"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="24sp"
-                app:backgroundTint="@color/secondary_color" />
+                app:backgroundTint="@color/secondary_color_scale1" />
 
         </LinearLayout>
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="2" />
+            android:layout_weight="3" />
 
     </LinearLayout>
 
