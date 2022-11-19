@@ -90,6 +90,29 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/createEventActivityEditTextEventTypeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_xlarge"
+                android:hint="@string/event_type" >
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/createEventActivityEditTextEventType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:background="@drawable/text_field_background"
+                    android:layout_margin="@dimen/margin_small"
+                    android:inputType="none"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="15dp"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="@dimen/text_size_medium" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_xlarge"
