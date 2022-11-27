@@ -1,14 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".home.user.HomeUserFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="User Screen" />
+    <data>
 
-</FrameLayout>
+        <variable
+            name="viewModel"
+            type="com.example.eventwise.home.user.HomeUserViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_xlarge"
+                    android:hint="@string/username" >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/homeUserFragmentEditTextUsername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:background="@drawable/text_field_background_borderless"
+                        android:layout_margin="@dimen/margin_medium"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:text="@{viewModel.userModel.username}"
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                        android:paddingTop="@dimen/form_text_field_padding_vertical"
+                        android:textSize="@dimen/text_size_large"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_xlarge"
+                    android:hint="@string/displayed_username" >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/homeUserFragmentEditTextDisplayedUsername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:background="@drawable/text_field_background_borderless"
+                        android:layout_margin="@dimen/margin_medium"
+                        android:inputType="text"
+                        android:text="@{viewModel.userModel.displayedUsername}"
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                        android:paddingTop="@dimen/form_text_field_padding_vertical"
+                        android:textSize="@dimen/text_size_large"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_xlarge"
+                    android:hint="@string/location" >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/homeUserFragmentEditTextLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:background="@drawable/text_field_background_borderless"
+                        android:layout_margin="@dimen/margin_medium"
+                        android:inputType="text"
+                        android:text="@{viewModel.userModel.location}"
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                        android:paddingTop="@dimen/form_text_field_padding_vertical"
+                        android:textSize="@dimen/text_size_large"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_large"
+                android:orientation="vertical">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/createEventActivitySaveButton"
+                    android:layout_width="@dimen/form_button_width"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:layout_margin="@dimen/margin_small"
+                    android:layout_gravity="center"
+                    android:text="@string/save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_medium"
+                    app:backgroundTint="@color/secondary_color_scale1" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/createEventActivityChangePasswordButton"
+                    android:layout_width="@dimen/form_button_width"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:layout_margin="@dimen/margin_small"
+                    android:layout_gravity="center"
+                    android:text="@string/change_password"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_medium"
+                    app:backgroundTint="@color/secondary_color_scale2" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/createEventActivityLogOutButton"
+                    android:layout_width="@dimen/form_button_width"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:layout_margin="@dimen/margin_small"
+                    android:layout_gravity="center"
+                    android:text="@string/log_out"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_medium"
+                    app:backgroundTint="@color/secondary_color_scale1" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/createEventActivityDeleteAccountButton"
+                    android:layout_width="@dimen/form_button_width"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:layout_margin="@dimen/margin_small"
+                    android:layout_gravity="center"
+                    android:text="@string/delete_account"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_medium"
+                    app:backgroundTint="@color/secondary_color_scale2" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

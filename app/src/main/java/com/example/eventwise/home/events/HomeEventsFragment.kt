@@ -6,17 +6,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.example.eventwise.R
+import com.example.eventwise.databinding.FragmentHomeEventsBinding
 
 
 class HomeEventsFragment : Fragment() {
 
+    private val viewModel by viewModels<HomeEventsViewModel>()
+
+    private lateinit var binding: FragmentHomeEventsBinding
+
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_events, container, false)
+    ): View {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_events, container, false)
+
+        binding.viewModel = viewModel
+
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        binding.fragmentHomeEventsEventRecyclerView.adapter = EventsRecyclerViewAdapter()
+
+        return binding.root
     }
 
     companion object {

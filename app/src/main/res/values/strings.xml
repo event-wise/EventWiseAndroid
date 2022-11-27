@@ -3,4 +3,13 @@
     <string name="events">Events</string>
     <string name="groups">Groups</string>
     <string name="user">User</string>
+    <string name="approved_events">Approved Events</string>
+    <string name="username">Username</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="change_password">Change Password</string>
+    <string name="log_out">Log Out</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="displayed_username">Displayed Username</string>
+    <string name="location">Location</string>
 </resources>
