@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">EventWise</string>
+    <string name="member_situations">Member Situations</string>
+    <string name="event_description">Event Description:</string>
+    <string name="event_location">Event Location:</string>
+    <string name="event_time">Event Time:</string>
+    <string name="event_type">Event Type:</string>
+    <string name="update_event">Update Event</string>
+    <string name="reject">Reject</string>
+    <string name="accept">Accept</string>
 </resources>

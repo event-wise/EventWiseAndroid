@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.eventwise.eventdetail.EventDetailViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".eventdetail.EventDetailActivity">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_large"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:foreground="@drawable/cardview_border_background"
+            android:backgroundTint="@color/primary_color_scale3"
+            app:cardCornerRadius="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:foreground="@drawable/cardview_border_background"
+                    android:backgroundTint="@color/primary_color_scale3">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_large"
+                            android:text="@{viewModel.eventDescription}"
+                            android:textColor="@color/black"
+                            android:layout_marginVertical="@dimen/margin_small"
+                            android:layout_marginHorizontal="@dimen/margin_small"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_large"
+                            android:text="@{viewModel.eventLocation}"
+                            android:textColor="@color/black"
+                            android:layout_marginVertical="@dimen/margin_small"
+                            android:layout_marginHorizontal="@dimen/margin_small"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_large"
+                            android:text="@{viewModel.eventTime}"
+                            android:textColor="@color/black"
+                            android:layout_marginVertical="@dimen/margin_small"
+                            android:layout_marginHorizontal="@dimen/margin_small"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_large"
+                            android:text="@{viewModel.eventType}"
+                            android:textColor="@color/black"
+                            android:layout_marginVertical="@dimen/margin_small"
+                            android:layout_marginHorizontal="@dimen/margin_small"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginVertical="@dimen/margin_small"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:foreground="@drawable/cardview_border_background"
+            android:backgroundTint="@color/primary_color_scale3"
+            app:cardCornerRadius="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:foreground="@drawable/cardview_border_background"
+                    android:backgroundTint="@color/primary_color_scale3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/member_situations"
+                        android:textSize="@dimen/text_size_large"
+                        android:textColor="@color/black"
+                        android:layout_marginVertical="@dimen/margin_small"
+                        android:layout_marginHorizontal="@dimen/margin_small"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/eventDetailActivityMemberRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:memberListBindingAdapter="@{viewModel.memberList}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/eventDetailActivityUpdateEventButton"
+                android:layout_width="@dimen/form_button_width"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:layout_margin="@dimen/margin_small"
+                android:layout_gravity="center"
+                android:text="@string/update_event"
+                android:textAllCaps="false"
+                android:paddingVertical="@dimen/margin_small"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_large"
+                app:backgroundTint="@color/text_field_background_color" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/eventDetailActivityRejectButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:layout_margin="@dimen/margin_small"
+                    android:layout_gravity="center"
+                    android:text="@string/reject"
+                    android:textAllCaps="false"
+                    android:paddingVertical="@dimen/margin_medium"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_xlarge"
+                    app:backgroundTint="@color/secondary_color_scale2" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/eventDetailActivityUpdateButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:layout_gravity="center"
+                    android:text="@string/accept"
+                    android:textAllCaps="false"
+                    android:paddingVertical="@dimen/margin_small"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_xlarge"
+                    app:backgroundTint="@color/secondary_color_scale1" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</layout>
