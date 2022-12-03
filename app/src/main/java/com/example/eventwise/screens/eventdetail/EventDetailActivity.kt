@@ -4,9 +4,15 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.View
+import android.widget.Toolbar
+import androidx.activity.viewModels
+import androidx.appcompat.app.ActionBar
 import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityEventDetailBinding
+import com.example.eventwise.screens.updateevent.UpdateEventActivity
 
 class EventDetailActivity : AppCompatActivity() {
 
@@ -15,16 +21,31 @@ class EventDetailActivity : AppCompatActivity() {
     private val eventId: Long
         get() = intent.getLongExtra(KEY_EVENT_ID, Long.MIN_VALUE)
 
+    private val eventDetailViewModel: EventDetailViewModel by viewModels {
+        EventDetailViewModelFactory(eventId)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_event_detail)
 
         binding.lifecycleOwner = this
 
-        binding.viewModel = EventDetailViewModel()
+        binding.viewModel = eventDetailViewModel
 
         binding.eventDetailActivityMemberRecyclerView.adapter = MemberListRecyclerViewAdapter()
 
+        binding.eventDetailActivityRejectButton.setOnClickListener {
+            eventDetailViewModel.rejectEvent()
+        }
+
+        binding.eventDetailActivityAcceptButton.setOnClickListener {
+            eventDetailViewModel.acceptEvent()
+        }
+
+        binding.eventDetailActivityUpdateEventButton.setOnClickListener {
+            UpdateEventActivity.newInstance(this, eventId)
+        }
     }
 
     companion object {

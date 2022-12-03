@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.eventwise.databinding.RecyclerViewMemberItemBinding
 import com.example.eventwise.models.MemberModel
 
-class MemberListRecyclerViewAdapter : ListAdapter<MemberModel, MemberItemViewHolder>(
+class MemberListRecyclerViewAdapter : ListAdapter<String, MemberItemViewHolder>(
     MemberItemDiffCallback
 ) {
 
@@ -26,7 +26,7 @@ class MemberListRecyclerViewAdapter : ListAdapter<MemberModel, MemberItemViewHol
 class MemberItemViewHolder private constructor(private val binding: RecyclerViewMemberItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: MemberModel) {
+    fun bind(item: String) {
         binding.memberItem = item
         binding.executePendingBindings()
     }
@@ -41,12 +41,12 @@ class MemberItemViewHolder private constructor(private val binding: RecyclerView
 }
 
 
-private object MemberItemDiffCallback : DiffUtil.ItemCallback<MemberModel>() {
-    override fun areItemsTheSame(oldItem: MemberModel, newItem: MemberModel): Boolean {
-        return oldItem.id == newItem.id
+private object MemberItemDiffCallback : DiffUtil.ItemCallback<String>() {
+    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+        return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: MemberModel, newItem: MemberModel): Boolean {
+    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
         return oldItem == newItem
     }
 }
