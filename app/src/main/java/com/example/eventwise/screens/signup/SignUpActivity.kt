@@ -19,7 +19,8 @@ class SignUpActivity : AppCompatActivity() {
 
         binding.viewModel = SignUpViewModel()
 
-
-
+        binding.signUpActivityCancelButton.setOnClickListener {
+            finish()
+        }
     }
 }
