@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.eventwise.updategroup.UpdateGroupViewModel" />
+            type="com.example.eventwise.screens.updategroup.UpdateGroupViewModel" />
     </data>
 
     <ScrollView
@@ -16,7 +16,7 @@
         android:orientation="vertical"
         android:fillViewport="true"
         android:background="@color/primary_color_scale1"
-        tools:context=".updategroup.UpdateGroupActivity">
+        tools:context=".screens.updategroup.UpdateGroupActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
