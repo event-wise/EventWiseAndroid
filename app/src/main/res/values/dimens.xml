@@ -14,7 +14,7 @@
     <dimen name="form_text_field_width">280dp</dimen>
     <dimen name="form_text_field_padding_horizontal">5dp</dimen>
     <dimen name="form_text_field_padding_vertical">25dp</dimen>
-    
+
     <dimen name="no_size">0dp</dimen>
     <dimen name="layout_margin_one_unit">1dp</dimen>
 

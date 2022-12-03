@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">EventWise</string>
+    <string name="group_name">Group Name</string>
+    <string name="group_description">Group Description</string>
+    <string name="group_location">Group Location</string>
+    <string name="save">Save</string>
     <string name="add_remove_people">Add/Remove People</string>
     <string name="create_event">Create Event</string>
     <string name="active_events">Active Events</string>
