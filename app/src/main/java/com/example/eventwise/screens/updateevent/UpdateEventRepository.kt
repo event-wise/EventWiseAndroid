@@ -1,5 +1,6 @@
 package com.example.eventwise.screens.updateevent
 
+import com.example.eventwise.models.EventDetailsModel
 import com.example.eventwise.models.EventSaveModel
 import com.example.eventwise.services.GatewayApi
 
@@ -25,5 +26,9 @@ class UpdateEventRepository {
                 type = type
             )
         )
+    }
+
+    suspend fun getEventDetails(eventId: Long) : EventDetailsModel? {
+        return GatewayApi.gatewayService.getEventDetails(eventId = eventId).body()
     }
 }

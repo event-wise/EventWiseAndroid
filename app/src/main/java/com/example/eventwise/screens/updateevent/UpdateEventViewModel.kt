@@ -17,7 +17,11 @@ class UpdateEventViewModel(
     val eventType: MutableLiveData<String> = MutableLiveData<String>()
     val eventDescription: MutableLiveData<String> = MutableLiveData<String>()
 
-    fun signUp(){
+    init {
+        getEventDetails()
+    }
+
+    fun updateEvent(){
         viewModelScope.launch {
             updateEventRepository.updateEvent(
                 eventName = eventName.value.orEmpty(),
@@ -28,6 +32,17 @@ class UpdateEventViewModel(
                 dateTime = eventTime.value.orEmpty(),
                 groupId = groupId
             )
+        }
+    }
+
+    private fun getEventDetails(){
+        viewModelScope.launch {
+            val eventDetails = updateEventRepository.getEventDetails(eventId = eventId)
+            eventName.value = eventDetails?.eventName.orEmpty()
+            eventTime.value = eventDetails?.dateTime.orEmpty()
+            eventLocation.value = eventDetails?.location.orEmpty()
+            eventType.value = eventDetails?.type.orEmpty()
+            eventDescription.value = eventDetails?.description.orEmpty()
         }
     }
 }
