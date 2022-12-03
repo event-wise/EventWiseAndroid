@@ -4,4 +4,13 @@
     <string name="create_event">Create Event</string>
     <string name="active_events">Active Events</string>
     <string name="logs">Logs</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="username">Username</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="displayed_name">Displayed Name</string>
+    <string name="location">Location</string>
+    <string name="password_confirmation">Password Confirmation</string>
+    <string name="cancel">Cancel</string>
 </resources>
