@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.eventwise.login.LoginActivityViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fillViewport="true"
+        android:background="@color/primary_color_scale1"
+        tools:context=".login.LoginActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/no_size"
+                android:layout_weight="2" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/loginActivitySignUpButton"
+                android:layout_width="@dimen/form_button_width"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:layout_margin="@dimen/margin_medium"
+                android:text="@string/sign_up"
+                android:textAllCaps="false"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_medium"
+                app:backgroundTint="@color/secondary_color_scale1" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/no_size"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_xlarge"
+                    android:hint="@string/username">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/loginActivityEditTextPersonName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="username"
+                        android:background="@drawable/text_field_background"
+                        android:layout_margin="@dimen/margin_medium"
+                        android:inputType="textPersonName"
+                        android:layout_gravity="center"
+                        android:text="@={viewModel.username}"
+                        android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                        android:paddingTop="@dimen/form_text_field_padding_vertical"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_xlarge"
+                    android:hint="@string/password">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/loginActivityEditTextPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="password"
+                        android:background="@drawable/text_field_background"
+                        android:layout_margin="@dimen/margin_medium"
+                        android:inputType="textPassword"
+                        android:layout_gravity="center"
+                        android:text="@={viewModel.password}"
+                        android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                        android:paddingTop="@dimen/form_text_field_padding_vertical"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/loginActivityLoginButton"
+                    android:layout_width="@dimen/form_button_width"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:layout_gravity="center"
+                    android:text="@string/login"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_medium"
+                    app:backgroundTint="@color/secondary_color_scale1" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/no_size"
+                android:layout_weight="2" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>
