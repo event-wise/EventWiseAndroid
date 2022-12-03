@@ -6,10 +6,11 @@
 
         <variable
             name="groupItem"
-            type="com.example.eventwise.models.GroupModel" />
+            type="com.example.eventwise.models.GroupsModel" />
     </data>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/recyclerViewGroupItemLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/primary_color_scale4"
@@ -20,7 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{groupItem.name}"
+            android:text="@{groupItem.groupName}"
             android:textColor="@color/black"
             android:layout_margin="@dimen/margin_medium"
             android:textSize="@dimen/text_size_large"/>

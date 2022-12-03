@@ -168,16 +168,16 @@
                     app:backgroundTint="@color/secondary_color_scale2" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/eventDetailActivityUpdateButton"
+                    android:id="@+id/eventDetailActivityAcceptButton"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_background"
-                    android:layout_margin="@dimen/margin_medium"
+                    android:layout_margin="@dimen/margin_small"
                     android:layout_gravity="center"
                     android:text="@string/accept"
                     android:textAllCaps="false"
-                    android:paddingVertical="@dimen/margin_small"
+                    android:paddingVertical="@dimen/margin_medium"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_xlarge"
                     app:backgroundTint="@color/secondary_color_scale1" />

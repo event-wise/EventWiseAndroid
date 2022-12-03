@@ -3,36 +3,56 @@ package com.example.eventwise.screens.eventdetail
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.example.eventwise.models.EventModel
-import com.example.eventwise.models.MemberModel
+import androidx.lifecycle.viewModelScope
+import com.example.eventwise.models.EventDetailsModel
+import kotlinx.coroutines.launch
 
 class EventDetailViewModel(
+    private val eventId: Long,
     private val eventDetailRepository: EventDetailRepository = EventDetailRepository()
 ) : ViewModel() {
 
-    val memberList: MutableLiveData<List<MemberModel>> = MutableLiveData<List<MemberModel>>()
+    var eventDetail: MutableLiveData<EventDetailsModel> = MutableLiveData()
 
-    private val event: MutableLiveData<EventModel> = MutableLiveData()
+    val memberList: MutableLiveData<List<String>?> = MutableLiveData()
 
-    val eventName = Transformations.map(event){
-        it?.name
+    val eventName = Transformations.map(eventDetail){
+        eventDetail.value?.eventName
     }
-    val eventDescription = Transformations.map(event){
-        "Description: " + it?.description
+    val eventDescription = Transformations.map(eventDetail){
+        "Description: " + eventDetail.value?.description
     }
-    val eventLocation = Transformations.map(event){
-        "Location: " + it?.location
+    val eventLocation = Transformations.map(eventDetail){
+        "Location: " + eventDetail.value?.location
     }
-    val eventTime = Transformations.map(event){
-        "Time: " + it?.dateTime
+    val eventTime = Transformations.map(eventDetail){
+        "Time: " + eventDetail.value?.dateTime
     }
-    val eventType = Transformations.map(event){
-        "Type: " + it?.type
+    val eventType = Transformations.map(eventDetail){
+        "Type: " + eventDetail.value?.type
     }
 
     init {
-        event.value = eventDetailRepository.createMockData()
-        memberList.value = eventDetailRepository.createMockDataForMembers()
+        retrieveEventDetail()
+    }
+
+    private fun retrieveEventDetail(){
+        viewModelScope.launch {
+            eventDetail.value = eventDetailRepository.eventDetailInformation(eventId)
+            memberList.value = eventDetail.value?.acceptedMembers
+        }
+    }
+
+    fun acceptEvent(){
+        viewModelScope.launch {
+            eventDetailRepository.acceptEvent(eventId)
+        }
+    }
+
+    fun rejectEvent(){
+        viewModelScope.launch {
+            eventDetailRepository.rejectEvent(eventId)
+        }
     }
 
 }

@@ -2,8 +2,11 @@ package com.example.eventwise.screens.updategroup
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 
 class UpdateGroupViewModel(
+    private val groupId: Long,
     private val updateGroupRepository: UpdateGroupRepository = UpdateGroupRepository()
 ): ViewModel() {
 
@@ -11,4 +14,28 @@ class UpdateGroupViewModel(
     val groupDescription: MutableLiveData<String> = MutableLiveData<String>()
     val groupLocation: MutableLiveData<String> = MutableLiveData<String>()
 
+    init {
+        getGroupInformation()
+    }
+
+    private fun getGroupInformation(){
+        viewModelScope.launch {
+            val groupDetails = updateGroupRepository.getGroupInformation(groupId = groupId)
+            groupName.value = groupDetails?.groupName.orEmpty()
+            groupDescription.value = groupDetails?.description.orEmpty()
+            groupLocation.value = groupDetails?.location.orEmpty()
+
+        }
+    }
+
+    fun updateGroup(){
+        viewModelScope.launch {
+            updateGroupRepository.updateGroup(
+                description = groupDescription.value.orEmpty(),
+                location = groupLocation.value.orEmpty(),
+                groupName = groupName.value.orEmpty(),
+                groupId = groupId
+            )
+        }
+    }
 }

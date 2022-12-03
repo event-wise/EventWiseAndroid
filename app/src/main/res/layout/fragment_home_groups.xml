@@ -30,5 +30,19 @@
             app:groupListBindingAdapter="@{viewModel.groupList}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fragmentHomeGroupsCreateGroupButton"
+            android:layout_width="@dimen/form_button_width"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:layout_margin="@dimen/margin_xlarge"
+            android:layout_gravity="center"
+            android:text="@string/create_group"
+            android:gravity="bottom"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_large"
+            app:backgroundTint="@color/secondary_color_scale1" />
+
     </LinearLayout>
 </layout>

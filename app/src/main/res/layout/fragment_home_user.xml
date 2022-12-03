@@ -63,7 +63,7 @@
                         android:background="@drawable/text_field_background_borderless"
                         android:layout_margin="@dimen/margin_medium"
                         android:inputType="text"
-                        android:text="@{viewModel.userModel.displayedUsername}"
+                        android:text="@{viewModel.userModel.displayedName}"
                         android:layout_gravity="center"
                         android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
                         android:paddingTop="@dimen/form_text_field_padding_vertical"

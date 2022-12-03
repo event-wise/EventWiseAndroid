@@ -6,47 +6,46 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eventwise.databinding.RecyclerViewMemberItemSmallTextBinding
-import com.example.eventwise.models.MemberModel
 
-class MemberListRecyclerViewAdapter : ListAdapter<MemberModel, MemberItemViewHolder>(
+class MemberListRecyclerViewAdapter : ListAdapter<String, MemberItemSmallViewHolder>(
     MemberItemDiffCallback
 ) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberItemViewHolder {
-        return MemberItemViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberItemSmallViewHolder {
+        return MemberItemSmallViewHolder.from(parent)
     }
 
-    override fun onBindViewHolder(holder: MemberItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MemberItemSmallViewHolder, position: Int) {
         val member = getItem(position)
         holder.bind(member)
     }
 }
 
 
-class MemberItemViewHolder private constructor(private val binding: RecyclerViewMemberItemSmallTextBinding) :
+class MemberItemSmallViewHolder private constructor(private val binding: RecyclerViewMemberItemSmallTextBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: MemberModel) {
+    fun bind(item: String) {
         binding.memberItem = item
         binding.executePendingBindings()
     }
 
     companion object {
-        fun from(parent: ViewGroup): MemberItemViewHolder {
+        fun from(parent: ViewGroup): MemberItemSmallViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = RecyclerViewMemberItemSmallTextBinding.inflate(layoutInflater, parent, false)
-            return MemberItemViewHolder(binding)
+            return MemberItemSmallViewHolder(binding)
         }
     }
 }
 
 
-private object MemberItemDiffCallback : DiffUtil.ItemCallback<MemberModel>() {
-    override fun areItemsTheSame(oldItem: MemberModel, newItem: MemberModel): Boolean {
-        return oldItem.id == newItem.id
+private object MemberItemDiffCallback : DiffUtil.ItemCallback<String>() {
+    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+        return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: MemberModel, newItem: MemberModel): Boolean {
+    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
         return oldItem == newItem
     }
 }
