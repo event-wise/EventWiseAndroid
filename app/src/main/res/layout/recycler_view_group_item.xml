@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="groupItem"
+            type="com.example.eventwise.models.GroupModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary_color_scale4"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:layout_marginVertical="@dimen/margin_small"
+        app:cardCornerRadius="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{groupItem.name}"
+            android:textColor="@color/black"
+            android:layout_margin="@dimen/margin_medium"
+            android:textSize="@dimen/text_size_large"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{groupItem.location}"
+            android:textSize="@dimen/text_size_medium"
+            android:layout_margin="@dimen/margin_medium"
+            android:layout_gravity="end|center_vertical" />
+
+    </androidx.cardview.widget.CardView>
+</layout>

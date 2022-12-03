@@ -25,15 +25,15 @@ class GroupDetailRepository {
 
     fun generateMockActiveEventsList(): List<EventModel> {
         return listOf(
-            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport"),
-            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport"),
-            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport"),
-            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport"),
-            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport"),
-            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport"),
-            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport"),
-            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport"),
-            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport"),
+            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport", null),
+            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport", null),
+            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport", null),
+            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport", null),
+            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport", null),
+            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport", null),
+            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport", null),
+            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport", null),
+            EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport", null),
         )
     }
 

@@ -13,6 +13,11 @@
         android:theme="@style/Theme.EventWise"
         tools:targetApi="31">
         <activity
+            android:name=".home.HomeActivity"
+            android:exported="true">
+        </activity>
+    
+        <activity
             android:name=".eventdetail.EventDetailActivity"
             android:exported="true">
         </activity>
