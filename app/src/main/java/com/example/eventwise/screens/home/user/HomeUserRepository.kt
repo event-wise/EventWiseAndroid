@@ -5,6 +5,6 @@ import com.example.eventwise.models.UserModel
 class HomeUserRepository {
 
     fun retrieveUserInformation() : UserModel {
-        return UserModel("afk", "Ahmet Furkan Kavraz", "Tuebingen")
+        return UserModel(10, "afk", "Ahmet Furkan Kavraz", "Tuebingen")
     }
 }
