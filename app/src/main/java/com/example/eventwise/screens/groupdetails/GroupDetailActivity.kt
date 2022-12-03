@@ -4,18 +4,25 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityGroupDetailBinding
 import com.example.eventwise.screens.createevent.CreateEventActivity
 import com.example.eventwise.screens.eventdetail.EventDetailActivity
+import com.example.eventwise.screens.eventdetail.EventDetailViewModel
+import com.example.eventwise.screens.eventdetail.EventDetailViewModelFactory
 
 class GroupDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGroupDetailBinding
 
     private val groupId: Long
-        get() = intent.getLongExtra(GroupDetailActivity.KEY_GROUP_ID, Long.MIN_VALUE)
+        get() = intent.getLongExtra(KEY_GROUP_ID, Long.MIN_VALUE)
+
+    private val groupDetailViewModel: GroupDetailsViewModel by viewModels {
+        GroupDetailsViewModelFactory(groupId)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +31,7 @@ class GroupDetailActivity : AppCompatActivity() {
 
         binding.lifecycleOwner = this
 
-        binding.viewModel = GroupDetailsViewModel()
+        binding.viewModel = groupDetailViewModel
 
         binding.groupDetailActivityActiveEventRecyclerView.adapter = ActiveEventsRecyclerViewAdapter()
 

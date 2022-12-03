@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eventwise.databinding.RecyclerViewActiveEventItemBinding
-import com.example.eventwise.models.EventModel
+import com.example.eventwise.models.EventsModel
 import com.example.eventwise.screens.eventdetail.EventDetailActivity
 
 
-class ActiveEventsRecyclerViewAdapter : ListAdapter<EventModel, ActiveEventItemViewHolder>(
+class ActiveEventsRecyclerViewAdapter : ListAdapter<EventsModel, ActiveEventItemViewHolder>(
     EventItemDiffCallback
 ) {
 
@@ -28,7 +28,7 @@ class ActiveEventsRecyclerViewAdapter : ListAdapter<EventModel, ActiveEventItemV
 class ActiveEventItemViewHolder private constructor(private val binding: RecyclerViewActiveEventItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: EventModel) {
+    fun bind(item: EventsModel) {
         binding.eventItem = item
         binding.executePendingBindings()
     }
@@ -38,8 +38,12 @@ class ActiveEventItemViewHolder private constructor(private val binding: Recycle
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = RecyclerViewActiveEventItemBinding.inflate(layoutInflater, parent, false)
             binding.recyclerViewActiveEventItemLayout.setOnClickListener {
-                binding.eventItem?.id?.let { id ->
-                    EventDetailActivity.newInstance(layoutInflater.context, id)
+                binding.eventItem?.id?.let { eventId ->
+                    binding.eventItem?.groupId?.let { groupId ->
+                        EventDetailActivity.newInstance(layoutInflater.context,
+                            eventId, groupId
+                        )
+                    }
                 }
             }
             return ActiveEventItemViewHolder(binding)
@@ -48,12 +52,12 @@ class ActiveEventItemViewHolder private constructor(private val binding: Recycle
 }
 
 
-private object EventItemDiffCallback : DiffUtil.ItemCallback<EventModel>() {
-    override fun areItemsTheSame(oldItem: EventModel, newItem: EventModel): Boolean {
+private object EventItemDiffCallback : DiffUtil.ItemCallback<EventsModel>() {
+    override fun areItemsTheSame(oldItem: EventsModel, newItem: EventsModel): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: EventModel, newItem: EventModel): Boolean {
+    override fun areContentsTheSame(oldItem: EventsModel, newItem: EventsModel): Boolean {
         return oldItem == newItem
     }
 }

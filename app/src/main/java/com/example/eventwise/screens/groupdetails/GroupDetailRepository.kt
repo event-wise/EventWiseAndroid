@@ -1,10 +1,16 @@
 package com.example.eventwise.screens.groupdetails
 
 import com.example.eventwise.models.EventModel
+import com.example.eventwise.models.GroupDetailsModel
 import com.example.eventwise.models.GroupModel
 import com.example.eventwise.models.MemberModel
+import com.example.eventwise.services.GatewayApi
 
 class GroupDetailRepository {
+
+    suspend fun getGroupDetails(groupId: Long) : GroupDetailsModel? {
+        return GatewayApi.gatewayService.getGroupDetails(groupId).body()
+    }
 
     fun generateMockGroup(): GroupModel {
         return GroupModel(1, "Deneme", "Bu bir grouptur", "Tuebingen")

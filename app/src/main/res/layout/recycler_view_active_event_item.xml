@@ -6,7 +6,7 @@
         
         <variable
             name="eventItem"
-            type="com.example.eventwise.models.EventModel" />
+            type="com.example.eventwise.models.EventsModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{eventItem.name}"
+            android:text="@{eventItem.eventName}"
             android:textColor="@color/black"
             android:layout_margin="@dimen/margin_small"
             android:textSize="@dimen/text_size_small"/>

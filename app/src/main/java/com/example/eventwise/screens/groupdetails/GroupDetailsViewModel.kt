@@ -3,34 +3,45 @@ package com.example.eventwise.screens.groupdetails
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.example.eventwise.models.EventModel
-import com.example.eventwise.models.GroupModel
-import com.example.eventwise.models.MemberModel
+import androidx.lifecycle.viewModelScope
+import com.example.eventwise.models.*
+import kotlinx.coroutines.launch
 
 class GroupDetailsViewModel(
+    private val groupId: Long,
     private val groupDetailRepository: GroupDetailRepository = GroupDetailRepository()
 ) : ViewModel() {
 
-    val group: MutableLiveData<GroupModel> = MutableLiveData()
+    private val groupDetailsModel: MutableLiveData<GroupDetailsModel> = MutableLiveData()
 
-    val groupDescription = Transformations.map(group){
+    val groupDescription = Transformations.map(groupDetailsModel){
         "Description: " + it?.description
     }
-    val groupLocation = Transformations.map(group){
+    val groupLocation = Transformations.map(groupDetailsModel){
         "Location: " + it?.location
     }
 
-    val groupMembersList: MutableLiveData<List<MemberModel>> = MutableLiveData()
+    val groupMembersList: List<String>?
+        get() = groupDetailsModel.value?.members
 
-    val activeEventsList: MutableLiveData<List<EventModel>> = MutableLiveData()
+    val activeEventsList: List<EventsModel>?
+        get() = groupDetailsModel.value?.events
 
-    val logsList: MutableLiveData<List<String>> = MutableLiveData()
+    val logsList: List<String>?
+        get() = groupDetailsModel.value?.logs
+
 
     init {
-        group.value = groupDetailRepository.generateMockGroup()
-        groupMembersList.value = groupDetailRepository.generateMockGroupMembers()
-        activeEventsList.value = groupDetailRepository.generateMockActiveEventsList()
-        logsList.value = groupDetailRepository.generateMockLogList()
+        getGroupDetails()
+    }
+
+    private fun getGroupDetails(){
+        viewModelScope.launch {
+            groupDetailsModel.value = groupDetailRepository.getGroupDetails(groupId)
+            groupDetailsModel.value?.events?.forEach {
+                it.groupId = groupId
+            }
+        }
     }
 
 }
