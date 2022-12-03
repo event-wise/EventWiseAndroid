@@ -2,13 +2,9 @@ package com.example.eventwise.screens.eventdetail
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.View
-import android.widget.Toolbar
 import androidx.activity.viewModels
-import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityEventDetailBinding

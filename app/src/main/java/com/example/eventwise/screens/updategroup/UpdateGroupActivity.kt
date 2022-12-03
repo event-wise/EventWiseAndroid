@@ -2,15 +2,13 @@ package com.example.eventwise.screens.updategroup
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityUpdateGroupBinding
 import com.example.eventwise.screens.updateevent.UpdateEventActivity
-import com.example.eventwise.screens.updateevent.UpdateEventViewModel
-import com.example.eventwise.screens.updateevent.UpdateEventViewModelFactory
 
 class UpdateGroupActivity : AppCompatActivity() {
 

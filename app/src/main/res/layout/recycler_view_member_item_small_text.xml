@@ -6,7 +6,7 @@
         
         <variable
             name="memberItem"
-            type="com.example.eventwise.models.MemberModel" />
+            type="String" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{memberItem.displayedName}"
+            android:text="@{memberItem}"
             android:textColor="@color/black"
             android:layout_margin="@dimen/margin_small"
             android:textSize="@dimen/text_size_small"/>

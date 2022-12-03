@@ -1,14 +1,10 @@
 package com.example.eventwise.screens.eventdetail
 
-import android.app.ActionBar
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.eventwise.models.EventDetailsModel
-import com.example.eventwise.models.EventModel
-import com.example.eventwise.models.MemberModel
-import com.example.eventwise.services.Constants
 import kotlinx.coroutines.launch
 
 class EventDetailViewModel(
@@ -18,8 +14,7 @@ class EventDetailViewModel(
 
     var eventDetail: MutableLiveData<EventDetailsModel> = MutableLiveData()
 
-    val memberList: List<String>
-        get() = eventDetail.value?.acceptedMembers.orEmpty()
+    val memberList: MutableLiveData<List<String>?> = MutableLiveData()
 
     val eventName = Transformations.map(eventDetail){
         eventDetail.value?.eventName
@@ -44,6 +39,7 @@ class EventDetailViewModel(
     private fun retrieveEventDetail(){
         viewModelScope.launch {
             eventDetail.value = eventDetailRepository.eventDetailInformation(eventId)
+            memberList.value = eventDetail.value?.acceptedMembers
         }
     }
 

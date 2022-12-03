@@ -4,7 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.eventwise.models.*
+import com.example.eventwise.models.EventsModel
+import com.example.eventwise.models.GroupDetailsModel
 import kotlinx.coroutines.launch
 
 class GroupDetailsViewModel(
@@ -12,7 +13,7 @@ class GroupDetailsViewModel(
     private val groupDetailRepository: GroupDetailRepository = GroupDetailRepository()
 ) : ViewModel() {
 
-    private val groupDetailsModel: MutableLiveData<GroupDetailsModel> = MutableLiveData()
+    private val groupDetailsModel: MutableLiveData<GroupDetailsModel?> = MutableLiveData()
 
     val groupDescription = Transformations.map(groupDetailsModel){
         "Description: " + it?.description
@@ -21,14 +22,11 @@ class GroupDetailsViewModel(
         "Location: " + it?.location
     }
 
-    val groupMembersList: List<String>?
-        get() = groupDetailsModel.value?.members
+    val groupMembersList: MutableLiveData<List<String>?> = MutableLiveData()
 
-    val activeEventsList: List<EventsModel>?
-        get() = groupDetailsModel.value?.events
+    val activeEventsList: MutableLiveData<List<EventsModel>?> = MutableLiveData()
 
-    val logsList: List<String>?
-        get() = groupDetailsModel.value?.logs
+    val logsList: MutableLiveData<List<String>?> = MutableLiveData()
 
 
     init {
@@ -37,10 +35,14 @@ class GroupDetailsViewModel(
 
     private fun getGroupDetails(){
         viewModelScope.launch {
-            groupDetailsModel.value = groupDetailRepository.getGroupDetails(groupId)
+            val groupDetails = groupDetailRepository.getGroupDetails(groupId)
+            groupDetailsModel.value = groupDetails
             groupDetailsModel.value?.events?.forEach {
                 it.groupId = groupId
             }
+            groupMembersList.value = groupDetails?.members
+            activeEventsList.value = groupDetails?.events
+            logsList.value = groupDetails?.logs
         }
     }
 

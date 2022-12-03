@@ -2,16 +2,13 @@ package com.example.eventwise.screens.groupdetails
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityGroupDetailBinding
 import com.example.eventwise.screens.createevent.CreateEventActivity
-import com.example.eventwise.screens.eventdetail.EventDetailActivity
-import com.example.eventwise.screens.eventdetail.EventDetailViewModel
-import com.example.eventwise.screens.eventdetail.EventDetailViewModelFactory
 
 class GroupDetailActivity : AppCompatActivity() {
 

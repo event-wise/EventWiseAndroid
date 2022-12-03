@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.eventwise.models.*
-import com.example.eventwise.services.GatewayApi
+import com.example.eventwise.models.EventsModel
 import kotlinx.coroutines.launch
 
 class HomeEventsViewModel (

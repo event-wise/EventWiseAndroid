@@ -3,7 +3,6 @@ package com.example.eventwise.screens.signup
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.eventwise.services.GatewayApi
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(

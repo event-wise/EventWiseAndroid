@@ -1,20 +1,6 @@
 package com.example.eventwise.services
 
-import com.example.eventwise.models.PasswordChangeRequestModel
-import com.example.eventwise.models.ResponseModel
-import com.example.eventwise.models.LoginRequestModel
-import com.example.eventwise.models.LoginResponseModel
-import com.example.eventwise.models.UserModel
-import com.example.eventwise.models.RegisterRequestModel
-import com.example.eventwise.models.ProfileUpdateRequestModel
-import com.example.eventwise.models.EventSaveModel
-import com.example.eventwise.models.EventsModel
-import com.example.eventwise.models.EventDetailsModel
-import com.example.eventwise.models.MemberAddRemoveModel
-import com.example.eventwise.models.GroupSaveModel
-import com.example.eventwise.models.GroupDetailsModel
-import com.example.eventwise.models.GroupsModel
-import com.example.eventwise.models.SearchResponseModel
+import com.example.eventwise.models.*
 import retrofit2.Response
 import retrofit2.http.*
 

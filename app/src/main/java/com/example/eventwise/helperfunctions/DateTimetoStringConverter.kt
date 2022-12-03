@@ -2,7 +2,6 @@ package com.example.eventwise.helperfunctions
 
 import android.annotation.SuppressLint
 import android.os.Build
-import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.format.DateTimeFormatter
 

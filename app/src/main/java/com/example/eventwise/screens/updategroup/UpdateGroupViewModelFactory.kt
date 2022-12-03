@@ -2,7 +2,6 @@ package com.example.eventwise.screens.updategroup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.eventwise.screens.updateevent.UpdateEventViewModel
 
 class UpdateGroupViewModelFactory(private val groupId: Long)
     : ViewModelProvider.Factory {

@@ -2,11 +2,10 @@ package com.example.eventwise.screens.home.groups
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eventwise.databinding.RecyclerViewGroupItemBinding
-import com.example.eventwise.models.GroupModel
 import com.example.eventwise.models.GroupsModel
 import com.example.eventwise.screens.groupdetails.GroupDetailActivity
 
