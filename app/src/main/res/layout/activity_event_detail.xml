@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.example.eventwise.eventdetail.EventDetailViewModel" />
+            type="com.example.eventwise.screens.eventdetail.EventDetailViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".eventdetail.EventDetailActivity">
+        tools:context=".screens.eventdetail.EventDetailActivity">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

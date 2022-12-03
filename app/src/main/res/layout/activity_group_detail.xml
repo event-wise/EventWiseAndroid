@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.example.eventwise.groupdetails.GroupDetailsViewModel" />
+            type="com.example.eventwise.screens.groupdetails.GroupDetailsViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".groupdetails.GroupDetailActivity">
+        tools:context=".screens.groupdetails.GroupDetailActivity">
 
         <ScrollView
             android:layout_width="match_parent"

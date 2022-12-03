@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.eventwise.signup.SignUpViewModel" />
+            type="com.example.eventwise.screens.signup.SignUpViewModel" />
     </data>
 
     <ScrollView
@@ -16,7 +16,7 @@
         android:orientation="vertical"
         android:fillViewport="true"
         android:background="@color/primary_color_scale1"
-        tools:context=".signup.SignUpActivity">
+        tools:context=".screens.signup.SignUpActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
