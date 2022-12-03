@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        
+        <variable
+            name="viewModel"
+            type="com.example.eventwise.creategroup.CreateGroupViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fillViewport="true"
+        android:background="@color/primary_color_scale1"
+        tools:context=".creategroup.CreateGroupActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/no_size"
+                android:layout_weight="2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_xlarge"
+                    android:hint="@string/group_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/createGroupActivityEditTextGroupName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:background="@drawable/text_field_background"
+                        android:layout_margin="@dimen/margin_medium"
+                        android:inputType="text"
+                        android:layout_gravity="center"
+                        android:text="@={viewModel.groupName}"
+                        android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                        android:paddingTop="@dimen/form_text_field_padding_vertical"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_xlarge"
+                    android:hint="@string/group_description">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/createGroupActivityEditTextGroupDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:background="@drawable/text_field_background"
+                        android:layout_margin="@dimen/margin_medium"
+                        android:inputType="text"
+                        android:layout_gravity="center"
+                        android:text="@={viewModel.groupDescription}"
+                        android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                        android:paddingTop="@dimen/form_text_field_padding_vertical"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_xlarge"
+                    android:hint="@string/group_location">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/createGroupActivityEditTextGroupLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:background="@drawable/text_field_background"
+                        android:layout_margin="@dimen/margin_medium"
+                        android:inputType="text"
+                        android:layout_gravity="center"
+                        android:text="@={viewModel.groupLocation}"
+                        android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
+                        android:paddingTop="@dimen/form_text_field_padding_vertical"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/no_size"
+                android:layout_weight="4" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/createGroupActivityCancelButton"
+                    android:layout_width="@dimen/form_button_width"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:layout_gravity="center"
+                    android:text="@string/cancel"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_medium"
+                    app:backgroundTint="@color/secondary_color_scale2" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/createGroupActivitySaveButton"
+                    android:layout_width="@dimen/form_button_width"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:layout_gravity="center"
+                    android:text="@string/save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_medium"
+                    app:backgroundTint="@color/secondary_color_scale1" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/no_size"
+                android:layout_weight="2" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

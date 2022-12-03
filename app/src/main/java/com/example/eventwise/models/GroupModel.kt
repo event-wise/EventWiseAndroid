@@ -2,7 +2,7 @@ package com.example.eventwise.models
 
 data class GroupModel (
         var id: Long,
-        var name: String?,
-        var location: String?,
-        var description: String?
+    val name: String?,
+    val description: String?,
+    val location: String?
 )
