@@ -13,6 +13,11 @@
         android:theme="@style/Theme.EventWise"
         tools:targetApi="31">
         <activity
+            android:name=".changepassword.ChangePasswordActivity"
+            android:exported="true">
+        </activity>
+    
+        <activity
             android:name=".updategroup.UpdateGroupActivity"
             android:exported="true">
         </activity>

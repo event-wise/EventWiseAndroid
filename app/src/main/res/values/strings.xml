@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">EventWise</string>
+    <string name="password">Password</string>
+    <string name="new_password">New Password</string>
+    <string name="password_confirmation">New Password Confirmation</string>
     <string name="group_name">Group Name</string>
     <string name="group_description">Group Description</string>
     <string name="group_location">Group Location</string>
@@ -19,9 +22,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="username">Username</string>
     <string name="login">Login</string>
-    <string name="password">Password</string>
     <string name="email">Email</string>
     <string name="displayed_name">Displayed Name</string>
     <string name="location">Location</string>
-    <string name="password_confirmation">Password Confirmation</string>
 </resources>
