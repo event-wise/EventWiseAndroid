@@ -9,7 +9,6 @@
     <string name="event_location">Event Location</string>
     <string name="event_description">Event Description</string>
     <string name="event_name">Event Name</string>
-    <string name="event_type">Event Type</string>
     <string name="delete_event">Delete Event</string>
     <string name="event_type">Event Type</string>
     <string name="add_remove_people">Add/Remove People</string>
