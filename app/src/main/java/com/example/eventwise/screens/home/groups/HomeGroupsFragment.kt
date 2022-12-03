@@ -1,15 +1,13 @@
-package com.example.eventwise.home.groups
+package com.example.eventwise.screens.home.groups
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.eventwise.R
-import com.example.eventwise.databinding.FragmentHomeEventsBinding
 import com.example.eventwise.databinding.FragmentHomeGroupsBinding
 
 

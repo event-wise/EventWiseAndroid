@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.eventwise.home.groups.HomeGroupsViewModel" />
+            type="com.example.eventwise.screens.home.groups.HomeGroupsViewModel" />
 
     </data>
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".home.groups.HomeGroupsFragment">
+        tools:context=".screens.home.groups.HomeGroupsFragment">
 
         <Space
             android:layout_width="wrap_content"

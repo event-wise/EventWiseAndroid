@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".home.user.HomeUserFragment">
+    tools:context=".screens.home.user.HomeUserFragment">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.example.eventwise.home.user.HomeUserViewModel" />
+            type="com.example.eventwise.screens.home.user.HomeUserViewModel" />
     </data>
 
     <ScrollView

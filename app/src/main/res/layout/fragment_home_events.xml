@@ -6,13 +6,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.eventwise.home.events.HomeEventsViewModel" />
+            type="com.example.eventwise.screens.home.events.HomeEventsViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".home.events.HomeEventsFragment">
+        tools:context=".screens.home.events.HomeEventsFragment">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

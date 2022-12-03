@@ -1,4 +1,4 @@
-package com.example.eventwise.home.events
+package com.example.eventwise.screens.home.events
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.ListAdapter
