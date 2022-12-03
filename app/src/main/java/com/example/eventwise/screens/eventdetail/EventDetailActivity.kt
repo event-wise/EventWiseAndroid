@@ -21,6 +21,9 @@ class EventDetailActivity : AppCompatActivity() {
     private val eventId: Long
         get() = intent.getLongExtra(KEY_EVENT_ID, Long.MIN_VALUE)
 
+    private val groupId: Long
+        get() = intent.getLongExtra(KEY_GROUP_ID, Long.MIN_VALUE)
+
     private val eventDetailViewModel: EventDetailViewModel by viewModels {
         EventDetailViewModelFactory(eventId)
     }
@@ -44,16 +47,18 @@ class EventDetailActivity : AppCompatActivity() {
         }
 
         binding.eventDetailActivityUpdateEventButton.setOnClickListener {
-            UpdateEventActivity.newInstance(this, eventId)
+            UpdateEventActivity.newInstance(this, eventId, groupId)
         }
     }
 
     companion object {
         private const val KEY_EVENT_ID = "event_id"
+        private const val KEY_GROUP_ID = "group_id"
 
-        val newInstance = { context: Context, eventId: Long ->
+        val newInstance = { context: Context, eventId: Long, groupId: Long ->
             val intent = Intent(context, EventDetailActivity::class.java)
             intent.putExtra(KEY_EVENT_ID, eventId)
+            intent.putExtra(KEY_GROUP_ID, groupId)
             context.startActivity(intent)
         }
     }
