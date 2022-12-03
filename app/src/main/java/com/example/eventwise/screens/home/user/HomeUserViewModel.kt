@@ -31,7 +31,6 @@ class HomeUserViewModel(
         viewModelScope.launch {
             homeUserRepository.updateProfile(ProfileUpdateRequestModel(
                 displayedName = _userModel.value?.displayedName,
-                id = _userModel.value?.id,
                 location = _userModel.value?.location,
             ))
         }
