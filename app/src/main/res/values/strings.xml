@@ -5,6 +5,7 @@
     <string name="group_location">Group Location</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
+    <string name="delete_group">Delete Group</string>
     <string name="event_time">Event Time</string>
     <string name="event_location">Event Location</string>
     <string name="event_description">Event Description</string>

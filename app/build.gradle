@@ -19,8 +19,8 @@ android {
     }
 
     buildFeatures {
-        dataBinding true
         viewBinding true
+        dataBinding true
     }
     buildTypes {
         release {
@@ -47,4 +47,3 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 }
-
