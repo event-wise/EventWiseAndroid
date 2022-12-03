@@ -1,8 +1,8 @@
 package com.example.eventwise.models
 
-data class UserModel (
-    var id: Long?,
-    var username: String?,
+data class ProfileUpdateRequestModel(
     var displayedName: String?,
+    var email: String?,
+    var id: Long?,
     var location: String?
 )
