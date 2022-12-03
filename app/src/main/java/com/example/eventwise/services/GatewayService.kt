@@ -32,7 +32,7 @@ interface GatewayService {
     ): Response<ResponseModel>
 
     @POST("api/account/login")
-    suspend fun authenticateUser(
+    suspend fun login(
         @Body loginRequestModel: LoginRequestModel
     ): Response<LoginResponseModel>
 

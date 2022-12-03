@@ -6,10 +6,11 @@
         
         <variable
             name="eventItem"
-            type="com.example.eventwise.models.EventModel" />
+            type="com.example.eventwise.models.EventsModel" />
     </data>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/recyclerViewEventItemLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/primary_color_scale4"
@@ -19,7 +20,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{eventItem.name}"
+            android:text="@{eventItem.eventName}"
             android:textColor="@color/black"
             android:layout_margin="@dimen/margin_medium"
             android:textSize="@dimen/text_size_large"/>
@@ -27,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{eventItem.location}"
+            android:text="@{eventItem.dateTime}"
             android:textSize="@dimen/text_size_medium"
             android:layout_margin="@dimen/margin_small"
             android:layout_gravity="end|center_vertical" />

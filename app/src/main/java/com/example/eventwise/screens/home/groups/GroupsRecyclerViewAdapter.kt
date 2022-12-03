@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.eventwise.databinding.RecyclerViewGroupItemBinding
 import com.example.eventwise.models.GroupModel
 import com.example.eventwise.models.GroupsModel
+import com.example.eventwise.screens.groupdetails.GroupDetailActivity
 
 class GroupsRecyclerViewAdapter : ListAdapter<GroupsModel, GroupItemViewHolder>(GroupItemDiffCallback) {
 
@@ -34,6 +35,13 @@ class GroupItemViewHolder private constructor(private val binding: RecyclerViewG
         fun from(parent: ViewGroup): GroupItemViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = RecyclerViewGroupItemBinding.inflate(layoutInflater, parent, false)
+            binding.recyclerViewGroupItemLayout.setOnClickListener {
+                binding.groupItem?.id?.let { groupId ->
+                    GroupDetailActivity.newInstance(layoutInflater.context,
+                        groupId
+                    )
+                }
+            }
             return GroupItemViewHolder(binding)
         }
     }
