@@ -1,4 +1,4 @@
-package com.example.eventwise.groupdetails
+package com.example.eventwise.eventdetail
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eventwise.databinding.RecyclerViewMemberItemBinding
-import com.example.eventwise.databinding.RecyclerViewMemberItemSmallTextBinding
 import com.example.eventwise.models.MemberModel
 
 class MemberListRecyclerViewAdapter : ListAdapter<MemberModel, MemberItemViewHolder>(MemberItemDiffCallback) {
@@ -22,7 +21,7 @@ class MemberListRecyclerViewAdapter : ListAdapter<MemberModel, MemberItemViewHol
 }
 
 
-class MemberItemViewHolder private constructor(private val binding: RecyclerViewMemberItemSmallTextBinding) :
+class MemberItemViewHolder private constructor(private val binding: RecyclerViewMemberItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: MemberModel) {
@@ -33,7 +32,7 @@ class MemberItemViewHolder private constructor(private val binding: RecyclerView
     companion object {
         fun from(parent: ViewGroup): MemberItemViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
-            val binding = RecyclerViewMemberItemSmallTextBinding.inflate(layoutInflater, parent, false)
+            val binding = RecyclerViewMemberItemBinding.inflate(layoutInflater, parent, false)
             return MemberItemViewHolder(binding)
         }
     }
