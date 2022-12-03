@@ -7,6 +7,5 @@ data class EventSaveModel(
     var eventName: String?,
     var groupId: Long,
     var location: String?,
-    var organizerId: Long,
     var type: String?
 )

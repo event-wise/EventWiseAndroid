@@ -4,6 +4,5 @@ data class GroupSaveModel(
     var description: String?,
     var groupId: Long,
     var groupName: String?,
-    var location: String?,
-    var ownerId: Long
+    var location: String?
 )

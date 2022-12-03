@@ -13,7 +13,7 @@ class HomeUserRepository {
     }
 
     suspend fun getProfileInformation() : UserModel? {
-        return GatewayApi.gatewayService.getProfile(Constants.GLOBAL_USER_ID).body()
+        return GatewayApi.gatewayService.getProfile().body()
     }
 
     suspend fun updateProfile(profileUpdateRequestModel: ProfileUpdateRequestModel) {

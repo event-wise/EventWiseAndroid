@@ -43,7 +43,6 @@ interface GatewayService {
 
     @GET("api/account/profile")
     suspend fun getProfile(
-        @Query("id") id: Long,
         @Header("Authorization") bearerToken: String = Constants.BEARER_TOKEN
     ): Response<UserModel>
 
@@ -62,7 +61,6 @@ interface GatewayService {
     @PUT("api/event/accept-event")
     suspend fun acceptEvent(
         @Query("eventId") eventId: Long,
-        @Query("userId") userId: Long,
         @Header("Authorization") bearerToken: String = Constants.BEARER_TOKEN
     ): Response<ResponseModel>
 
@@ -75,27 +73,23 @@ interface GatewayService {
     @DELETE("api/event/delete-event")
     suspend fun deleteEvent(
         @Query("eventId") eventId: Long,
-        @Query("userId") userId: Long,
         @Header("Authorization") bearerToken: String = Constants.BEARER_TOKEN
     ): Response<ResponseModel>
 
     @GET("api/event/event-details")
     suspend fun getEventDetails(
         @Query("eventId") eventId: Long,
-        @Query("userId") userId: Long,
         @Header("Authorization") bearerToken: String = Constants.BEARER_TOKEN
     ): Response<EventDetailsModel>
 
     @GET("api/event/list-user-events")
     suspend fun listUserEvents(
-        @Query("userId") userId: Long,
         @Header("Authorization") bearerToken: String = Constants.BEARER_TOKEN
     ): Response<List<EventsModel>>
 
     @PUT("api/event/reject-event")
     suspend fun rejectEvent(
         @Query("eventId") eventId: Long,
-        @Query("userId") userId: Long,
         @Header("Authorization") bearerToken: String = Constants.BEARER_TOKEN
     ): Response<ResponseModel>
 
@@ -120,27 +114,23 @@ interface GatewayService {
     @DELETE("api/group/delete-group")
     suspend fun deleteGroup(
         @Query("groupId") groupId: Long,
-        @Query("userId") userId: Long,
         @Header("Authorization") bearerToken: String = Constants.BEARER_TOKEN
     ): Response<ResponseModel>
 
     @PUT("api/group/exit-from-group")
     suspend fun exitFromGroup(
         @Query("groupId") groupId: Long,
-        @Query("userId") userId: Long,
         @Header("Authorization") bearerToken: String = Constants.BEARER_TOKEN
     ): Response<ResponseModel>
 
     @GET("api/group/get-group-details")
     suspend fun getGroupDetails(
         @Query("groupId") groupId: Long,
-        @Query("userId") userId: Long,
         @Header("Authorization") bearerToken: String = Constants.BEARER_TOKEN
     ): Response<GroupDetailsModel>
 
     @GET("api/group/list-user-groups")
     suspend fun listUserGroups(
-        @Query("userId") userId: Long,
         @Header("Authorization") bearerToken: String = Constants.BEARER_TOKEN
     ): Response<List<GroupsModel>>
 
@@ -148,7 +138,6 @@ interface GatewayService {
     suspend fun searchMember(
         @Query("groupId") groupId: Long,
         @Query("search") search: String,
-        @Query("userId") userId: Long,
         @Header("Authorization") bearerToken: String = Constants.BEARER_TOKEN
     ): Response<SearchResponseModel>
 

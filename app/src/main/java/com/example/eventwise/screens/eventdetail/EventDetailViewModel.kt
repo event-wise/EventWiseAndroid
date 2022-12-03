@@ -43,19 +43,19 @@ class EventDetailViewModel(
 
     private fun retrieveEventDetail(){
         viewModelScope.launch {
-            eventDetail.value = eventDetailRepository.eventDetailInformation(eventId, Constants.GLOBAL_USER_ID)
+            eventDetail.value = eventDetailRepository.eventDetailInformation(eventId)
         }
     }
 
     fun acceptEvent(){
         viewModelScope.launch {
-            eventDetailRepository.acceptEvent(eventId, Constants.GLOBAL_USER_ID)
+            eventDetailRepository.acceptEvent(eventId)
         }
     }
 
     fun rejectEvent(){
         viewModelScope.launch {
-            eventDetailRepository.rejectEvent(eventId, Constants.GLOBAL_USER_ID)
+            eventDetailRepository.rejectEvent(eventId)
         }
     }
 

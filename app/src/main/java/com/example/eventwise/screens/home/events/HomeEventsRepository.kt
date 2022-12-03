@@ -11,8 +11,8 @@ import java.time.Instant
 
 class HomeEventsRepository {
 
-    suspend fun listUserEvents() : List<EventsModel>? {
-        return GatewayApi.gatewayService.listUserEvents(Constants.GLOBAL_USER_ID).body().orEmpty()
+    suspend fun listUserEvents() : List<EventsModel> {
+        return GatewayApi.gatewayService.listUserEvents().body().orEmpty()
     }
 
     fun retrieveMockData() : List<EventModel> {

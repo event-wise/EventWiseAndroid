@@ -7,7 +7,7 @@ import com.example.eventwise.services.GatewayApi
 class HomeGroupsRepository {
 
     suspend fun listUserGroups() : List<GroupsModel> {
-        return GatewayApi.gatewayService.listUserGroups(Constants.GLOBAL_USER_ID).body().orEmpty()
+        return GatewayApi.gatewayService.listUserGroups().body().orEmpty()
     }
 
 

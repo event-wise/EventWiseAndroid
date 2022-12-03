@@ -26,15 +26,15 @@ class EventDetailRepository {
         )
     }
 
-    suspend fun eventDetailInformation(eventId: Long, userId: Long) : EventDetailsModel? {
-        return GatewayApi.gatewayService.getEventDetails(eventId, userId).body()
+    suspend fun eventDetailInformation(eventId: Long) : EventDetailsModel? {
+        return GatewayApi.gatewayService.getEventDetails(eventId).body()
     }
 
-    suspend fun acceptEvent(eventId: Long, userId: Long) {
-        GatewayApi.gatewayService.acceptEvent(eventId, userId)
+    suspend fun acceptEvent(eventId: Long) {
+        GatewayApi.gatewayService.acceptEvent(eventId)
     }
 
-    suspend fun rejectEvent(eventId: Long, userId: Long) {
-        GatewayApi.gatewayService.rejectEvent(eventId, userId)
+    suspend fun rejectEvent(eventId: Long) {
+        GatewayApi.gatewayService.rejectEvent(eventId)
     }
 }
