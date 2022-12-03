@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityGroupDetailBinding
+import com.example.eventwise.screens.createevent.CreateEventActivity
 import com.example.eventwise.screens.eventdetail.EventDetailActivity
 
 class GroupDetailActivity : AppCompatActivity() {
@@ -30,10 +31,14 @@ class GroupDetailActivity : AppCompatActivity() {
         binding.groupDetailActivityMemberRecyclerView.adapter = MemberListRecyclerViewAdapter()
 
         binding.groupDetailActivityLogRecyclerView.adapter = LogListRecyclerViewAdapter()
+
+        binding.groupDetailActivityCreateEventButton.setOnClickListener {
+            CreateEventActivity.newInstance(applicationContext, groupId)
+        }
     }
 
     companion object {
-        private const val KEY_GROUP_ID = "event_id"
+        private const val KEY_GROUP_ID = "group_id"
 
         val newInstance = { context: Context, eventId: Long ->
             val intent = Intent(context, GroupDetailActivity::class.java)

@@ -1,15 +1,21 @@
 package com.example.eventwise.screens.createevent
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityCreateEventBinding
+import com.example.eventwise.screens.groupdetails.GroupDetailActivity
 
 class CreateEventActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCreateEventBinding
+
+    private val groupId: Long
+        get() = intent.getLongExtra(CreateEventActivity.KEY_GROUP_ID_CREATE, Long.MIN_VALUE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +38,16 @@ class CreateEventActivity : AppCompatActivity() {
             binding.createEventActivityEditTextEventType.setOnClickListener {
                 binding.createEventActivityEditTextEventType.showDropDown()
             }
+        }
+    }
+
+    companion object {
+        private const val KEY_GROUP_ID_CREATE = "group_id_create"
+
+        val newInstance = { context: Context, groupId: Long ->
+            val intent = Intent(context, GroupDetailActivity::class.java)
+            intent.putExtra(CreateEventActivity.KEY_GROUP_ID_CREATE, groupId)
+            context.startActivity(intent)
         }
     }
 }

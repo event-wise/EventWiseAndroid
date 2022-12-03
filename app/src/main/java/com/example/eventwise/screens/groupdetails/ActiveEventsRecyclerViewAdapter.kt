@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eventwise.databinding.RecyclerViewActiveEventItemBinding
 import com.example.eventwise.models.EventModel
+import com.example.eventwise.screens.eventdetail.EventDetailActivity
 
 
 class ActiveEventsRecyclerViewAdapter : ListAdapter<EventModel, ActiveEventItemViewHolder>(
@@ -36,6 +37,11 @@ class ActiveEventItemViewHolder private constructor(private val binding: Recycle
         fun from(parent: ViewGroup): ActiveEventItemViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = RecyclerViewActiveEventItemBinding.inflate(layoutInflater, parent, false)
+            binding.recyclerViewActiveEventItemLayout.setOnClickListener {
+                binding.eventItem?.id?.let { id ->
+                    EventDetailActivity.newInstance(layoutInflater.context, id)
+                }
+            }
             return ActiveEventItemViewHolder(binding)
         }
     }
