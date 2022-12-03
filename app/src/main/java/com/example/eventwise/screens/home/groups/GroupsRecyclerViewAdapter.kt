@@ -1,4 +1,4 @@
-package com.example.eventwise.home.groups
+package com.example.eventwise.screens.home.groups
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

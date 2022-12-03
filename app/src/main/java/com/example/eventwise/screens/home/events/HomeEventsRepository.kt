@@ -1,4 +1,4 @@
-package com.example.eventwise.home.events
+package com.example.eventwise.screens.home.events
 
 import com.example.eventwise.models.EventModel
 import java.time.Instant

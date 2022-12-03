@@ -1,4 +1,4 @@
-package com.example.eventwise.home.user
+package com.example.eventwise.screens.home.user
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.eventwise.R
 import com.example.eventwise.databinding.FragmentHomeUserBinding
-import com.example.eventwise.home.events.HomeEventsViewModel
 
 
 class HomeUserFragment : Fragment() {

@@ -1,4 +1,4 @@
-package com.example.eventwise.home.groups
+package com.example.eventwise.screens.home.groups
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

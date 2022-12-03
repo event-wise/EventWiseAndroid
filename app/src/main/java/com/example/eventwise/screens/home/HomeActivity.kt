@@ -1,4 +1,4 @@
-package com.example.eventwise.home
+package com.example.eventwise.screens.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,9 +8,9 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityHomeBinding
-import com.example.eventwise.home.events.HomeEventsFragment
-import com.example.eventwise.home.groups.HomeGroupsFragment
-import com.example.eventwise.home.user.HomeUserFragment
+import com.example.eventwise.screens.home.events.HomeEventsFragment
+import com.example.eventwise.screens.home.groups.HomeGroupsFragment
+import com.example.eventwise.screens.home.user.HomeUserFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeActivity : AppCompatActivity() {
