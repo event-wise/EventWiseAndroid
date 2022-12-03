@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="margin_large">24dp</dimen>
     <dimen name="margin_xlarge">32dp</dimen>
 
     <dimen name="text_size_small">12sp</dimen>
     <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_large">24sp</dimen>
+    <dimen name="text_size_xlarge">30sp</dimen>
 
     <dimen name="form_button_width">200dp</dimen>
     <dimen name="form_text_field_width">280dp</dimen>
     <dimen name="form_text_field_padding_horizontal">5dp</dimen>
     <dimen name="form_text_field_padding_vertical">25dp</dimen>
+    
     <dimen name="no_size">0dp</dimen>
-    <dimen name="margin_small">8dp</dimen>
-
+    <dimen name="layout_margin_one_unit">1dp</dimen>
 
 </resources>
