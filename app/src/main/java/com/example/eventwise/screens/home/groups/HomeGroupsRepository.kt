@@ -1,32 +1,39 @@
 package com.example.eventwise.screens.home.groups
 
-import com.example.eventwise.models.GroupModel
+import com.example.eventwise.models.GroupsModel
+import com.example.eventwise.services.Constants
+import com.example.eventwise.services.GatewayApi
 
 class HomeGroupsRepository {
 
-    fun retrieveMockData() : List<GroupModel> {
+    suspend fun listUserGroups() : List<GroupsModel> {
+        return GatewayApi.gatewayService.listUserGroups(Constants.GLOBAL_USER_ID).body().orEmpty()
+    }
+
+
+    fun retrieveMockData() : List<GroupsModel> {
         return listOf(
-            GroupModel(1, "Deneme", location = "Uskudar", description = null),
-            GroupModel(1, "Deneme2", location = "Alamanya", description = null),
-            GroupModel(1, "Deneme3", location = "Ingiltere", description = null),
-            GroupModel(1, "Deneme", location = "Uskudar", description = null),
-            GroupModel(1, "Deneme2", location = "Alamanya", description = null),
-            GroupModel(1, "Deneme3", location = "Ingiltere", description = null),
-            GroupModel(1, "Deneme", location = "Uskudar", description = null),
-            GroupModel(1, "Deneme2", location = "Alamanya", description = null),
-            GroupModel(1, "Deneme3", location = "Ingiltere", description = null),
-            GroupModel(1, "Deneme", location = "Uskudar", description = null),
-            GroupModel(1, "Deneme2", location = "Alamanya", description = null),
-            GroupModel(1, "Deneme3", location = "Ingiltere", description = null),
-            GroupModel(1, "Deneme", location = "Uskudar", description = null),
-            GroupModel(1, "Deneme2", location = "Alamanya", description = null),
-            GroupModel(1, "Deneme3", location = "Ingiltere", description = null),
-            GroupModel(1, "Deneme", location = "Uskudar", description = null),
-            GroupModel(1, "Deneme2", location = "Alamanya", description = null),
-            GroupModel(1, "Deneme3", location = "Ingiltere", description = null),
-            GroupModel(1, "Deneme", location = "Uskudar", description = null),
-            GroupModel(1, "Deneme2", location = "Alamanya", description = null),
-            GroupModel(1, "Deneme3", location = "Ingiltere", description = null)
+            GroupsModel( "Deneme", 1, location = "Uskudar"),
+            GroupsModel( "Deneme2", 1, location = "Alamanya"),
+            GroupsModel( "Deneme3", 1, location = "Ingiltere"),
+            GroupsModel( "Deneme", 1, location = "Uskudar"),
+            GroupsModel( "Deneme2", 1, location = "Alamanya"),
+            GroupsModel( "Deneme3", 1, location = "Ingiltere"),
+            GroupsModel( "Deneme", 1, location = "Uskudar"),
+            GroupsModel( "Deneme2", 1, location = "Alamanya"),
+            GroupsModel( "Deneme3", 1, location = "Ingiltere"),
+            GroupsModel( "Deneme", 1, location = "Uskudar"),
+            GroupsModel( "Deneme2", 1, location = "Alamanya"),
+            GroupsModel( "Deneme3", 1, location = "Ingiltere"),
+            GroupsModel( "Deneme", 1, location = "Uskudar"),
+            GroupsModel( "Deneme2", 1, location = "Alamanya"),
+            GroupsModel( "Deneme3", 1, location = "Ingiltere"),
+            GroupsModel( "Deneme", 1, location = "Uskudar"),
+            GroupsModel( "Deneme2", 1, location = "Alamanya"),
+            GroupsModel( "Deneme3", 1, location = "Ingiltere"),
+            GroupsModel( "Deneme", 1, location = "Uskudar"),
+            GroupsModel( "Deneme2", 1, location = "Alamanya"),
+            GroupsModel( "Deneme3", 1, location = "Ingiltere")
         )
     }
 }

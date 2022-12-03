@@ -42,7 +42,7 @@ interface GatewayService {
     ): Response<ResponseModel>
 
     @GET("api/account/profile")
-    suspend fun profile(
+    suspend fun getProfile(
         @Query("id") id: Long,
         @Header("Authorization") bearerToken: String = Constants.BEARER_TOKEN
     ): Response<UserModel>

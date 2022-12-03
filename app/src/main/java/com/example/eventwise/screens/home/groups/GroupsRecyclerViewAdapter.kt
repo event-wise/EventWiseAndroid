@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eventwise.databinding.RecyclerViewGroupItemBinding
 import com.example.eventwise.models.GroupModel
+import com.example.eventwise.models.GroupsModel
 
-class GroupsRecyclerViewAdapter : ListAdapter<GroupModel, GroupItemViewHolder>(GroupItemDiffCallback) {
+class GroupsRecyclerViewAdapter : ListAdapter<GroupsModel, GroupItemViewHolder>(GroupItemDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupItemViewHolder {
         return GroupItemViewHolder.from(parent)
@@ -24,7 +25,7 @@ class GroupsRecyclerViewAdapter : ListAdapter<GroupModel, GroupItemViewHolder>(G
 class GroupItemViewHolder private constructor(private val binding: RecyclerViewGroupItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: GroupModel) {
+    fun bind(item: GroupsModel) {
         binding.groupItem = item
         binding.executePendingBindings()
     }
@@ -39,12 +40,12 @@ class GroupItemViewHolder private constructor(private val binding: RecyclerViewG
 }
 
 
-private object GroupItemDiffCallback : DiffUtil.ItemCallback<GroupModel>() {
-    override fun areItemsTheSame(oldItem: GroupModel, newItem: GroupModel): Boolean {
+private object GroupItemDiffCallback : DiffUtil.ItemCallback<GroupsModel>() {
+    override fun areItemsTheSame(oldItem: GroupsModel, newItem: GroupsModel): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: GroupModel, newItem: GroupModel): Boolean {
+    override fun areContentsTheSame(oldItem: GroupsModel, newItem: GroupsModel): Boolean {
         return oldItem == newItem
     }
 }
