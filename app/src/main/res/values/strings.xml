@@ -11,7 +11,6 @@
     <string name="event_name">Event Name</string>
     <string name="delete_event">Delete Event</string>
     <string name="event_type">Event Type</string>
-    <string name="save">Save</string>
     <string name="add_remove_people">Add/Remove People</string>
     <string name="create_event">Create Event</string>
     <string name="active_events">Active Events</string>
@@ -24,5 +23,4 @@
     <string name="displayed_name">Displayed Name</string>
     <string name="location">Location</string>
     <string name="password_confirmation">Password Confirmation</string>
-    <string name="cancel">Cancel</string>
 </resources>
