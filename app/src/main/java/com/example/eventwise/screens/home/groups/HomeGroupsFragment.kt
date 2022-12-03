@@ -1,5 +1,6 @@
 package com.example.eventwise.screens.home.groups
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.eventwise.R
 import com.example.eventwise.databinding.FragmentHomeGroupsBinding
+import com.example.eventwise.screens.creategroup.CreateGroupActivity
 
 
 class HomeGroupsFragment : Fragment() {
@@ -29,6 +31,10 @@ class HomeGroupsFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.fragmentHomeGroupsGroupRecyclerView.adapter = GroupsRecyclerViewAdapter()
+
+        binding.fragmentHomeGroupsCreateGroupButton.setOnClickListener {
+            startActivity(Intent(requireActivity(), CreateGroupActivity::class.java))
+        }
 
         return binding.root
     }
