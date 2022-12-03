@@ -1,11 +1,14 @@
 
 package com.example.eventwise.screens.login
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityLoginBinding
+import com.example.eventwise.screens.home.HomeActivity
+import com.example.eventwise.screens.signup.SignUpActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -16,5 +19,17 @@ class LoginActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
 
+        binding.lifecycleOwner = this
+
+        binding.viewModel = LoginActivityViewModel()
+
+        binding.loginActivitySignUpButton.setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
+        }
+
+        binding.loginActivityLoginButton.setOnClickListener {
+            finish()
+            startActivity(Intent(this, HomeActivity::class.java))
+        }
     }
 }
