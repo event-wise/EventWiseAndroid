@@ -6,7 +6,7 @@ import com.example.eventwise.models.MemberModel
 class EventDetailRepository {
 
     fun createMockData() : EventModel {
-        return EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport")
+        return EventModel(1, "Gym", "Everybody Welcome", "tuebingen", "13.00", "Sport", null)
     }
 
     fun createMockDataForMembers() : List<MemberModel> {

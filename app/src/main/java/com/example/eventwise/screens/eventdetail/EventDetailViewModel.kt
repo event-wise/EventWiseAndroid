@@ -24,7 +24,7 @@ class EventDetailViewModel(
         "Location: " + it?.location
     }
     val eventTime = Transformations.map(event){
-        "Time: " + it?.time
+        "Time: " + it?.dateTime
     }
     val eventType = Transformations.map(event){
         "Type: " + it?.type
