@@ -7,8 +7,8 @@ data class EventModel (
     var name: String?,
     var location: String?,
     var description: String?,
-    var type: EventType?,
-    var dateTime: Instant?,
+    var dateTime: String?,
+    var type: String?,
     var creationTime: Instant?
     )
 
