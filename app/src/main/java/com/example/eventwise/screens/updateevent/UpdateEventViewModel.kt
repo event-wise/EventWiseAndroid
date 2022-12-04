@@ -17,6 +17,9 @@ class UpdateEventViewModel(
     val eventType: MutableLiveData<String> = MutableLiveData<String>()
     val eventDescription: MutableLiveData<String> = MutableLiveData<String>()
 
+    val errorMessage: MutableLiveData<String> = MutableLiveData(null)
+    val success: MutableLiveData<Boolean> = MutableLiveData(false)
+
     init {
         getEventDetails()
     }
