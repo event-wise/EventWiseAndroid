@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityUpdateGroupBinding
 import com.example.eventwise.screens.updateevent.UpdateEventActivity
+import com.google.android.material.snackbar.Snackbar
 
 class UpdateGroupActivity : AppCompatActivity() {
 
@@ -28,6 +29,29 @@ class UpdateGroupActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         binding.viewModel = updateGroupViewModel
+
+        updateGroupViewModel.errorMessage.observe(this) { error ->
+            if (error != null) {
+                Snackbar.make(binding.updateGroupActivityLayout, "", Snackbar.LENGTH_SHORT).also {
+                    it.setText(error)
+                    it.show()
+                }
+            }
+        }
+
+        updateGroupViewModel.success.observe(this) {
+            if (it == true){
+                finish()
+            }
+        }
+
+        binding.updateGroupActivityCancelButton.setOnClickListener {
+            finish()
+        }
+
+        binding.updateGroupActivitySaveButton.setOnClickListener {
+            updateGroupViewModel.updateGroup()
+        }
     }
 
     companion object {
