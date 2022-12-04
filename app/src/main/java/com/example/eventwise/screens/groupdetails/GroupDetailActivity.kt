@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityGroupDetailBinding
 import com.example.eventwise.screens.createevent.CreateEventActivity
+import com.example.eventwise.screens.usersearch.UserSearchActivity
 
 class GroupDetailActivity : AppCompatActivity() {
 
@@ -38,6 +39,10 @@ class GroupDetailActivity : AppCompatActivity() {
 
         binding.groupDetailActivityCreateEventButton.setOnClickListener {
             CreateEventActivity.newInstance(this, groupId)
+        }
+
+        binding.groupDetailActivityAddRemoveButton.setOnClickListener {
+            UserSearchActivity.newInstance(this, groupId)
         }
     }
 
