@@ -2,6 +2,7 @@ package com.example.eventwise.screens.login
 
 import androidx.lifecycle.MutableLiveData
 import com.example.eventwise.models.LoginRequestModel
+import com.example.eventwise.services.Constants
 import com.example.eventwise.services.GatewayApi
 
 class LoginActivityRepository {
@@ -15,6 +16,9 @@ class LoginActivityRepository {
         val request = GatewayApi.gatewayService.login(
             LoginRequestModel(username, password)
         )
+        Constants.BEARER_TOKEN = request.body()?.token.orEmpty()
+        Constants.GLOBAL_USER_ID = request.body()?.id ?: 0
+        
         if (request.code() !in 200..299){
             errorMessage.value = request.errorBody().toString()
             success.value = false
