@@ -15,7 +15,10 @@ class CreateGroupRepository {
 
         if (request.code() !in 200..299){
             errorMessage.value = request.errorBody().toString()
-            success.value = false
+            success.value = request.body()?.success
+            if (success.value == false){
+                errorMessage.value = request.body()?.message.toString()
+            }
         } else {
             success.value = true
             errorMessage.value = null
