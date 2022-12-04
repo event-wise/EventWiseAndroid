@@ -17,5 +17,6 @@
 
     <dimen name="no_size">0dp</dimen>
     <dimen name="layout_margin_one_unit">1dp</dimen>
+    <dimen name="margin_allignment_event_type">40dp</dimen>
 
 </resources>
