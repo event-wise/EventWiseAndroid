@@ -2,7 +2,9 @@ package com.example.eventwise.screens.eventdetail
 
 import android.content.Context
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -45,6 +47,15 @@ class EventDetailActivity : AppCompatActivity() {
         binding.eventDetailActivityUpdateEventButton.setOnClickListener {
             UpdateEventActivity.newInstance(this, eventId, groupId)
         }
+
+        eventDetailViewModel.eventOwner.observe(this) {
+            binding.eventDetailActivityUpdateEventButton.visibility = if (it){
+                View.VISIBLE
+            } else {
+                View.INVISIBLE
+            }
+        }
+
     }
 
     companion object {
