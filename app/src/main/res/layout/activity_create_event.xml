@@ -71,7 +71,7 @@
                         android:importantForAutofill="no"
                         android:background="@drawable/text_field_background"
                         android:layout_margin="@dimen/margin_medium"
-                        android:inputType="datetime"
+                        android:inputType="text"
                         android:layout_gravity="center"
                         android:text="@={viewModel.eventTime}"
                         android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
