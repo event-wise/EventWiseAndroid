@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.eventwise.screens.usersearch.UserSearchViewModel" />
     </data>
 
     <ScrollView
@@ -35,6 +38,7 @@
                     android:background="@drawable/text_field_background"
                     android:layout_margin="@dimen/margin_medium"
                     android:inputType="text"
+                    android:text="@={viewModel.usernameSearch}"
                     android:layout_gravity="center"
                     android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
                     android:paddingTop="@dimen/form_text_field_padding_vertical"
@@ -56,6 +60,7 @@
                 app:backgroundTint="@color/secondary_color_scale1" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/userSearchActivityFoundedPeopleLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_small"
@@ -96,7 +101,7 @@
                             android:textSize="@dimen/text_size_xlarge"/>
 
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/updateEventActivityCancelButton"
+                            android:id="@+id/activityUserSearchAddRemoveButton"
                             android:layout_width="150dp"
                             android:layout_height="match_parent"
                             android:background="@drawable/button_background_more_radius"
