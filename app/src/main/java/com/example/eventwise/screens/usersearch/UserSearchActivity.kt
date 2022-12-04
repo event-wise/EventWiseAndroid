@@ -11,6 +11,7 @@ import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityUserSearchBinding
 import com.example.eventwise.screens.createevent.CreateEventActivity
 import com.example.eventwise.screens.groupdetails.GroupDetailActivity
+import com.google.android.material.snackbar.Snackbar
 
 class UserSearchActivity : AppCompatActivity() {
 
@@ -53,6 +54,21 @@ class UserSearchActivity : AppCompatActivity() {
 
         binding.activityUserSearchAddRemoveButton.setOnClickListener {
             userSearchViewModel.addRemoveMember()
+        }
+
+        userSearchViewModel.errorMessage.observe(this) { error ->
+            if (error != null) {
+                Snackbar.make(binding.userSearchActivityLayout, "", Snackbar.LENGTH_SHORT).also {
+                    it.setText(error)
+                    it.show()
+                }
+            }
+        }
+
+        userSearchViewModel.success.observe(this) {
+            if (it == true){
+                finish()
+            }
         }
 
     }

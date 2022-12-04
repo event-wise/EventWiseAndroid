@@ -18,10 +18,17 @@ class UserSearchViewModel(
 
     private var userId: Long? = null
 
+    val errorMessage: MutableLiveData<String> = MutableLiveData(null)
+    val success: MutableLiveData<Boolean> = MutableLiveData(false)
+
     fun searchMember(){
         viewModelScope.launch {
-            val searchResponseModel = userSearchRepository
-                    .searchMember(groupId = groupId, usernameSearch.value.toString())
+            val searchResponseModel = userSearchRepository.searchMember(
+                success,
+                errorMessage,
+                groupId,
+                usernameSearch.value.toString()
+            )
 
             userFound.value = searchResponseModel?.found
             isMember.value = searchResponseModel?.member
@@ -32,7 +39,12 @@ class UserSearchViewModel(
     fun addRemoveMember(){
         viewModelScope.launch {
             if (userFound.value == true) {
-                userSearchRepository.addRemoveMember(groupId, userId ?: 0)
+                userSearchRepository.addRemoveMember(
+                    success,
+                    errorMessage,
+                    groupId,
+                    userId ?: 0
+                )
             }
         }
     }
