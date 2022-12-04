@@ -1,22 +1,34 @@
 package com.example.eventwise.screens.changepassword
 
+import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import com.example.eventwise.models.PasswordChangeRequestModel
 import com.example.eventwise.services.GatewayApi
+import kotlin.coroutines.coroutineContext
 
 class ChangePasswordRepository {
 
     suspend fun changePassword(
+        success: MutableLiveData<Boolean>,
+        errorMessage: MutableLiveData<String>,
         currentPassword: String,
         newPassword: String,
         newPasswordConfirmation: String
     ) {
-        GatewayApi.gatewayService.changePassword(
+        val request = GatewayApi.gatewayService.changePassword(
             PasswordChangeRequestModel(
                 currentPassword,
                 newPassword,
                 newPasswordConfirmation
             )
         )
+        if (request.code() !in 200..299){
+            errorMessage.value = request.errorBody().toString()
+            success.value = false
+        } else {
+            success.value = true
+            errorMessage.value = null
+        }
     }
 
 }

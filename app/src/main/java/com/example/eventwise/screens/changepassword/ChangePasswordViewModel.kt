@@ -13,10 +13,14 @@ class ChangePasswordViewModel(
     val newPassword: MutableLiveData<String> = MutableLiveData<String>()
     val newPasswordConfirmation: MutableLiveData<String> = MutableLiveData<String>()
 
+    val errorMessage: MutableLiveData<String> = MutableLiveData(null)
+    val success: MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun changePassword(){
         viewModelScope.launch {
             changePasswordRepository.changePassword(
+                success,
+                errorMessage,
                 password.value.orEmpty(),
                 newPassword.value.orEmpty(),
                 newPasswordConfirmation.value.orEmpty()
