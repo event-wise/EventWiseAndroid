@@ -37,7 +37,7 @@ class GroupDetailActivity : AppCompatActivity() {
         binding.groupDetailActivityLogRecyclerView.adapter = LogListRecyclerViewAdapter()
 
         binding.groupDetailActivityCreateEventButton.setOnClickListener {
-            CreateEventActivity.newInstance(applicationContext, groupId)
+            CreateEventActivity.newInstance(this, groupId)
         }
     }
 

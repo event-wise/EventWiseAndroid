@@ -12,9 +12,17 @@ class LoginActivityViewModel(
     val username: MutableLiveData<String> = MutableLiveData<String>()
     val password: MutableLiveData<String> = MutableLiveData<String>()
 
+    val errorMessage: MutableLiveData<String> = MutableLiveData(null)
+    val success: MutableLiveData<Boolean> = MutableLiveData(false)
+
     fun login(){
         viewModelScope.launch {
-            loginActivityRepository.login(username.value.orEmpty(), password.value.orEmpty())
+            loginActivityRepository.login(
+                success,
+                errorMessage,
+                username.value.orEmpty(),
+                password.value.orEmpty()
+            )
         }
     }
 }

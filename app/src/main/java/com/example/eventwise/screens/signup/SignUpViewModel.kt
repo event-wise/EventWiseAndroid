@@ -16,9 +16,14 @@ class SignUpViewModel(
     val password: MutableLiveData<String> = MutableLiveData<String>()
     val passwordConfirmation: MutableLiveData<String> = MutableLiveData<String>()
 
+    val errorMessage: MutableLiveData<String> = MutableLiveData(null)
+    val success: MutableLiveData<Boolean> = MutableLiveData(false)
+
     fun signup(){
         viewModelScope.launch {
             signUpRepository.signup(
+                success,
+                errorMessage,
                 displayedName = displayedName.value.orEmpty(),
                 username = username.value.orEmpty(),
                 email = email.value.orEmpty(),

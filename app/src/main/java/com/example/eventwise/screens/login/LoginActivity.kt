@@ -10,6 +10,7 @@ import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityLoginBinding
 import com.example.eventwise.screens.home.HomeActivity
 import com.example.eventwise.screens.signup.SignUpActivity
+import com.google.android.material.snackbar.Snackbar
 
 class LoginActivity : AppCompatActivity() {
 
@@ -26,13 +27,27 @@ class LoginActivity : AppCompatActivity() {
 
         binding.viewModel = loginActivityViewModel
 
+        loginActivityViewModel.errorMessage.observe(this) { error ->
+            if (error != null) {
+                Snackbar.make(binding.loginActivityLayout, "", Snackbar.LENGTH_SHORT).also {
+                    it.setText(error)
+                    it.show()
+                }
+            }
+        }
+
+        loginActivityViewModel.success.observe(this) {
+            if (it == true){
+                finish()
+            }
+        }
+
         binding.loginActivitySignUpButton.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
 
         binding.loginActivityLoginButton.setOnClickListener {
-            finish()
-            startActivity(Intent(this, HomeActivity::class.java))
+            loginActivityViewModel.login()
         }
     }
 }

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityUpdateEventBinding
+import com.google.android.material.snackbar.Snackbar
 
 class UpdateEventActivity : AppCompatActivity() {
 
@@ -46,6 +47,28 @@ class UpdateEventActivity : AppCompatActivity() {
             binding.updateEventActivityEditTextEventType.setOnClickListener {
                 binding.updateEventActivityEditTextEventType.showDropDown()
             }
+        }
+        updateEventViewModel.errorMessage.observe(this) { error ->
+            if (error != null) {
+                Snackbar.make(binding.updateEventActivityLayout, "", Snackbar.LENGTH_SHORT).also {
+                    it.setText(error)
+                    it.show()
+                }
+            }
+        }
+
+        updateEventViewModel.success.observe(this) {
+            if (it == true){
+                finish()
+            }
+        }
+
+        binding.updateEventActivityCancelButton.setOnClickListener {
+            finish()
+        }
+
+        binding.updateEventActivitySaveButton.setOnClickListener {
+            updateEventViewModel.updateEvent()
         }
     }
 

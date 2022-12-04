@@ -1,11 +1,13 @@
 package com.example.eventwise.screens.signup
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivitySignUpBinding
+import com.google.android.material.snackbar.Snackbar
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -22,8 +24,27 @@ class SignUpActivity : AppCompatActivity() {
 
         binding.viewModel = signUpActivityViewModel
 
+        signUpActivityViewModel.errorMessage.observe(this) { error ->
+            if (error != null) {
+                Snackbar.make(binding.signUpActivityLayout, "", Snackbar.LENGTH_SHORT).also {
+                    it.setText(error)
+                    it.show()
+                }
+            }
+        }
+
+        signUpActivityViewModel.success.observe(this) {
+            if (it == true){
+                finish()
+            }
+        }
+
         binding.signUpActivityCancelButton.setOnClickListener {
             finish()
+        }
+
+        binding.signUpActivitySignUpButton.setOnClickListener {
+            signUpActivityViewModel.signup()
         }
     }
 }

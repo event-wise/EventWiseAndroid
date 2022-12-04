@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityCreateEventBinding
 import com.example.eventwise.screens.groupdetails.GroupDetailActivity
+import com.google.android.material.snackbar.Snackbar
 
 class CreateEventActivity : AppCompatActivity() {
 
@@ -30,6 +31,29 @@ class CreateEventActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         binding.viewModel = createEventViewModel
+
+        createEventViewModel.errorMessage.observe(this) { error ->
+            if (error != null) {
+                Snackbar.make(binding.createEventActivityLayout, "", Snackbar.LENGTH_SHORT).also {
+                    it.setText(error)
+                    it.show()
+                }
+            }
+        }
+
+        createEventViewModel.success.observe(this) {
+            if (it == true){
+                finish()
+            }
+        }
+
+        binding.createEventActivitySaveButton.setOnClickListener {
+            createEventViewModel.createEvent()
+        }
+
+        binding.createEventActivityCancelButton.setOnClickListener {
+            finish()
+        }
 
         ArrayAdapter.createFromResource(
             this,
@@ -52,8 +76,8 @@ class CreateEventActivity : AppCompatActivity() {
         private const val KEY_GROUP_ID_CREATE = "group_id_create"
 
         val newInstance = { context: Context, groupId: Long ->
-            val intent = Intent(context, GroupDetailActivity::class.java)
-            intent.putExtra(CreateEventActivity.KEY_GROUP_ID_CREATE, groupId)
+            val intent = Intent(context, CreateEventActivity::class.java)
+            intent.putExtra(KEY_GROUP_ID_CREATE, groupId)
             context.startActivity(intent)
         }
     }

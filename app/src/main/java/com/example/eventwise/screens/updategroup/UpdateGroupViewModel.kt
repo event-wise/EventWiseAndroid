@@ -14,6 +14,9 @@ class UpdateGroupViewModel(
     val groupDescription: MutableLiveData<String> = MutableLiveData<String>()
     val groupLocation: MutableLiveData<String> = MutableLiveData<String>()
 
+    val errorMessage: MutableLiveData<String> = MutableLiveData(null)
+    val success: MutableLiveData<Boolean> = MutableLiveData(false)
+
     init {
         getGroupInformation()
     }
@@ -31,6 +34,8 @@ class UpdateGroupViewModel(
     fun updateGroup(){
         viewModelScope.launch {
             updateGroupRepository.updateGroup(
+                success,
+                errorMessage,
                 description = groupDescription.value.orEmpty(),
                 location = groupLocation.value.orEmpty(),
                 groupName = groupName.value.orEmpty(),

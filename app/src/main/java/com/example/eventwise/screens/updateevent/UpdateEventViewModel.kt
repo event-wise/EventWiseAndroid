@@ -17,6 +17,9 @@ class UpdateEventViewModel(
     val eventType: MutableLiveData<String> = MutableLiveData<String>()
     val eventDescription: MutableLiveData<String> = MutableLiveData<String>()
 
+    val errorMessage: MutableLiveData<String> = MutableLiveData(null)
+    val success: MutableLiveData<Boolean> = MutableLiveData(false)
+
     init {
         getEventDetails()
     }
@@ -24,6 +27,8 @@ class UpdateEventViewModel(
     fun updateEvent(){
         viewModelScope.launch {
             updateEventRepository.updateEvent(
+                success,
+                errorMessage,
                 eventName = eventName.value.orEmpty(),
                 eventId = eventId,
                 location = eventLocation.value.orEmpty(),

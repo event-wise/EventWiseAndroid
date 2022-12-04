@@ -38,6 +38,7 @@
     <string name="displayed_name">Displayed Name</string>
     <string name="location">Location</string>
     <string name="create_group">Create Group</string>
+    <string name="members">Members</string>
     <string name="search_people">Search People</string>
     <string name="founded_people">Founded People</string>
     <string name="add_to_group">Add to Group</string>

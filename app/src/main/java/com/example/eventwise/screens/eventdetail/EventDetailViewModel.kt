@@ -5,6 +5,7 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.eventwise.models.EventDetailsModel
+import com.example.eventwise.services.Constants
 import kotlinx.coroutines.launch
 
 class EventDetailViewModel(
@@ -31,6 +32,7 @@ class EventDetailViewModel(
     val eventType = Transformations.map(eventDetail){
         "Type: " + eventDetail.value?.type
     }
+    val eventOwner : MutableLiveData<Boolean> = MutableLiveData(false)
 
     init {
         retrieveEventDetail()
@@ -39,6 +41,7 @@ class EventDetailViewModel(
     private fun retrieveEventDetail(){
         viewModelScope.launch {
             eventDetail.value = eventDetailRepository.eventDetailInformation(eventId)
+            eventOwner.value = eventDetail.value?.organizerId == Constants.GLOBAL_USER_ID
             memberList.value = eventDetail.value?.acceptedMembers
         }
     }
