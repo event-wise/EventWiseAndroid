@@ -13,7 +13,7 @@ class GroupDetailsViewModel(
     private val groupDetailRepository: GroupDetailRepository = GroupDetailRepository()
 ) : ViewModel() {
 
-    private val groupDetailsModel: MutableLiveData<GroupDetailsModel?> = MutableLiveData()
+    private val groupDetailsModel: MutableLiveData<GroupDetailsModel> = MutableLiveData()
 
     val groupDescription = Transformations.map(groupDetailsModel){
         "Description: " + it?.description
@@ -22,11 +22,11 @@ class GroupDetailsViewModel(
         "Location: " + it?.location
     }
 
-    val groupMembersList: MutableLiveData<List<String>?> = MutableLiveData()
+    val groupMembersList: MutableLiveData<List<String>> = MutableLiveData()
 
-    val activeEventsList: MutableLiveData<List<EventsModel>?> = MutableLiveData()
+    val activeEventsList: MutableLiveData<List<EventsModel>> = MutableLiveData()
 
-    val logsList: MutableLiveData<List<String>?> = MutableLiveData()
+    val logsList: MutableLiveData<List<String>> = MutableLiveData()
 
 
     init {
@@ -35,14 +35,13 @@ class GroupDetailsViewModel(
 
     private fun getGroupDetails(){
         viewModelScope.launch {
-            val groupDetails = groupDetailRepository.getGroupDetails(groupId)
-            groupDetailsModel.value = groupDetails
+            groupDetailsModel.value  = groupDetailRepository.getGroupDetails(groupId)
             groupDetailsModel.value?.events?.forEach {
                 it.groupId = groupId
             }
-            groupMembersList.value = groupDetails?.members
-            activeEventsList.value = groupDetails?.events
-            logsList.value = groupDetails?.logs
+            groupMembersList.value =  groupDetailsModel.value?.members
+            activeEventsList.value = groupDetailsModel.value?.events
+            logsList.value = groupDetailsModel.value?.logs
         }
     }
 

@@ -109,7 +109,7 @@ interface GatewayService {
         @Header("Authorization") bearerToken: String = Constants.BEARER_TOKEN
     ): Response<ResponseModel>
 
-    @GET("api/group/get-group-details")
+    @GET("api/group/group-details")
     suspend fun getGroupDetails(
         @Query("groupId") groupId: Long,
         @Header("Authorization") bearerToken: String = Constants.BEARER_TOKEN

@@ -76,8 +76,8 @@ class CreateEventActivity : AppCompatActivity() {
         private const val KEY_GROUP_ID_CREATE = "group_id_create"
 
         val newInstance = { context: Context, groupId: Long ->
-            val intent = Intent(context, GroupDetailActivity::class.java)
-            intent.putExtra(CreateEventActivity.KEY_GROUP_ID_CREATE, groupId)
+            val intent = Intent(context, CreateEventActivity::class.java)
+            intent.putExtra(KEY_GROUP_ID_CREATE, groupId)
             context.startActivity(intent)
         }
     }
