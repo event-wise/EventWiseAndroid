@@ -33,7 +33,7 @@ class GroupDetailsViewModel(
         getGroupDetails()
     }
 
-    private fun getGroupDetails(){
+    fun getGroupDetails(){
         viewModelScope.launch {
             groupDetailsModel.value  = groupDetailRepository.getGroupDetails(groupId)
             groupDetailsModel.value?.events?.forEach {

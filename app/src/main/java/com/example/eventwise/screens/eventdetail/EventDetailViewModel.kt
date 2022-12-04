@@ -38,7 +38,7 @@ class EventDetailViewModel(
         retrieveEventDetail()
     }
 
-    private fun retrieveEventDetail(){
+    fun retrieveEventDetail(){
         viewModelScope.launch {
             eventDetail.value = eventDetailRepository.eventDetailInformation(eventId)
             eventOwner.value = eventDetail.value?.organizerId == Constants.GLOBAL_USER_ID

@@ -17,29 +17,43 @@ class HomeUserViewModel(
     val userModel: LiveData<UserModel>
         get() = _userModel
 
+    val displayedUsername = MutableLiveData<String>()
+    val location = MutableLiveData<String>()
+
+    val errorMessage: MutableLiveData<String> = MutableLiveData(null)
+
     init {
         retrieveUserInformation()
     }
 
-    private fun retrieveUserInformation(){
+    fun retrieveUserInformation(){
         viewModelScope.launch {
-            _userModel.value = homeUserRepository.getProfileInformation()
+            _userModel.value = homeUserRepository.getProfileInformation(
+                errorMessage
+            )
+            displayedUsername.value = _userModel.value?.displayedName.orEmpty()
+            location.value = _userModel.value?.location.orEmpty()
         }
     }
 
     fun updateProfileInformation(){
         viewModelScope.launch {
-            homeUserRepository.updateProfile(ProfileUpdateRequestModel(
-                displayedName = _userModel.value?.displayedName,
-                location = _userModel.value?.location,
-            ))
+            homeUserRepository.updateProfile(
+                errorMessage,
+                ProfileUpdateRequestModel(
+                    displayedName = displayedUsername.value,
+                    location = location.value,
+                )
+            )
+            retrieveUserInformation()
         }
-        retrieveUserInformation()
     }
 
     fun logOut(){
         viewModelScope.launch {
-            homeUserRepository.logOut()
+            homeUserRepository.logOut(
+                errorMessage
+            )
         }
     }
 

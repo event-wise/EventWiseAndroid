@@ -20,7 +20,7 @@ class HomeGroupsViewModel(
         refreshGroupList()
     }
 
-    private fun refreshGroupList(){
+    fun refreshGroupList(){
         viewModelScope.launch {
             _groupList.value = homeGroupsRepository.listUserGroups()
         }

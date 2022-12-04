@@ -34,6 +34,11 @@ class HomeEventsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onStart() {
+        super.onStart()
+        viewModel.refreshEventList()
+    }
+
     companion object {
 
         fun newInstance(): HomeEventsFragment {

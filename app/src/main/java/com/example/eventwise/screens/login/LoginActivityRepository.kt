@@ -18,7 +18,7 @@ class LoginActivityRepository {
         )
         Constants.BEARER_TOKEN = request.body()?.token.orEmpty()
         Constants.GLOBAL_USER_ID = request.body()?.id ?: 0
-        
+
         if (request.code() !in 200..299){
             errorMessage.value = request.errorBody().toString()
             success.value = false

@@ -39,6 +39,7 @@ class LoginActivity : AppCompatActivity() {
         loginActivityViewModel.success.observe(this) {
             if (it == true){
                 finish()
+                startActivity(Intent(this, HomeActivity::class.java))
             }
         }
 

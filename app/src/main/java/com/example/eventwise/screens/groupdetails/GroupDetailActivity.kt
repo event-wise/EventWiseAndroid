@@ -46,6 +46,11 @@ class GroupDetailActivity : AppCompatActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        groupDetailViewModel.getGroupDetails()
+    }
+
     companion object {
         private const val KEY_GROUP_ID = "group_id"
 

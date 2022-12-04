@@ -41,7 +41,7 @@ class UserSearchActivity : AppCompatActivity() {
         }
 
         userSearchViewModel.isMember.observe(this){
-            binding.userSearchActivitySearchPeopleButton.text = if (it == true){
+            binding.activityUserSearchAddRemoveButton.text = if (it == true){
                 getString(R.string.remove_from_group)
             } else {
                 getString(R.string.add_to_group)

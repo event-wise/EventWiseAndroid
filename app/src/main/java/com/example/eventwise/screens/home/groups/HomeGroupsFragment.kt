@@ -39,6 +39,11 @@ class HomeGroupsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onStart() {
+        super.onStart()
+        viewModel.refreshGroupList()
+    }
+
     companion object {
 
         fun newInstance(): HomeGroupsFragment {

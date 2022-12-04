@@ -13,6 +13,7 @@ import com.example.eventwise.databinding.FragmentHomeUserBinding
 import com.example.eventwise.screens.changepassword.ChangePasswordActivity
 import com.example.eventwise.screens.login.LoginActivity
 import com.example.eventwise.services.Constants
+import com.google.android.material.snackbar.Snackbar
 
 
 class HomeUserFragment : Fragment() {
@@ -53,7 +54,21 @@ class HomeUserFragment : Fragment() {
             requireActivity().finish()
         }
 
+        viewModel.errorMessage.observe(requireActivity()) { error ->
+            if (error != null) {
+                Snackbar.make(binding.homeUserFragmentLayout, "", Snackbar.LENGTH_SHORT).also {
+                    it.setText(error)
+                    it.show()
+                }
+            }
+        }
+
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.retrieveUserInformation()
     }
 
     companion object {

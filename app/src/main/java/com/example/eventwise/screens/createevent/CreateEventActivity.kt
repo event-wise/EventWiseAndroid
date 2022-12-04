@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityCreateEventBinding
-import com.example.eventwise.screens.groupdetails.GroupDetailActivity
 import com.google.android.material.snackbar.Snackbar
 
 class CreateEventActivity : AppCompatActivity() {

@@ -50,6 +50,8 @@ class HomeActivity : AppCompatActivity() {
         private const val EVENTS_PAGE_INDEX = 0
         private const val GROUPS_PAGE_INDEX = 1
         private const val USER_PAGE_INDEX = 2
+
+
     }
 }
 

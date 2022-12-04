@@ -27,7 +27,6 @@ class UpdateGroupViewModel(
             groupName.value = groupDetails?.groupName.orEmpty()
             groupDescription.value = groupDetails?.description.orEmpty()
             groupLocation.value = groupDetails?.location.orEmpty()
-
         }
     }
 

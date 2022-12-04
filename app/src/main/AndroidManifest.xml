@@ -16,6 +16,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".screens.usersearch.UserSearchActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
             android:name=".screens.eventdetail.EventDetailActivity"
             android:exported="true">
         </activity>

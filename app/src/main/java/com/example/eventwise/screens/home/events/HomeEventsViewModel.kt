@@ -20,7 +20,7 @@ class HomeEventsViewModel (
     val eventList: LiveData<List<EventsModel>>
         get() = _eventList
 
-    private fun refreshEventList(){
+    fun refreshEventList(){
         viewModelScope.launch {
             _eventList.value = homeEventsRepository.listUserEvents()
         }
