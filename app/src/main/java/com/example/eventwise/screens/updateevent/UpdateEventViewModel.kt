@@ -27,6 +27,8 @@ class UpdateEventViewModel(
     fun updateEvent(){
         viewModelScope.launch {
             updateEventRepository.updateEvent(
+                success,
+                errorMessage,
                 eventName = eventName.value.orEmpty(),
                 eventId = eventId,
                 location = eventLocation.value.orEmpty(),
