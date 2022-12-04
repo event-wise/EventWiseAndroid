@@ -1,18 +1,21 @@
 package com.example.eventwise.screens.signup
 
+import androidx.lifecycle.MutableLiveData
 import com.example.eventwise.models.RegisterRequestModel
 import com.example.eventwise.services.GatewayApi
 
 class SignUpRepository {
 
     suspend fun signup(
+        success: MutableLiveData<Boolean>,
+        errorMessage: MutableLiveData<String>,
         displayedName: String,
         email: String,
         location: String,
         password: String,
         username: String
     ){
-        GatewayApi.gatewayService.register(
+        val request = GatewayApi.gatewayService.register(
             RegisterRequestModel(
                 displayedName = displayedName,
                 email = email,
@@ -21,5 +24,12 @@ class SignUpRepository {
                 username = username
             )
         )
+        if (request.code() !in 200..299){
+            errorMessage.value = request.errorBody().toString()
+            success.value = false
+        } else {
+            success.value = true
+            errorMessage.value = null
+        }
     }
 }
