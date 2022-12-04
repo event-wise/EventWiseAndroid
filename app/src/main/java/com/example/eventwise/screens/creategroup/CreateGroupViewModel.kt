@@ -14,9 +14,14 @@ class CreateGroupViewModel(
     val groupDescription: MutableLiveData<String> = MutableLiveData<String>()
     val groupLocation: MutableLiveData<String> = MutableLiveData<String>()
 
+    val errorMessage: MutableLiveData<String> = MutableLiveData(null)
+    val success: MutableLiveData<Boolean> = MutableLiveData(false)
+
     fun createGroup(){
         viewModelScope.launch {
             createGroupRepository.createGroup(
+                success,
+                errorMessage,
                 GroupSaveModel(
                     description = groupDescription.value.orEmpty(),
                     groupId = 0,

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityCreateGroupBinding
+import com.google.android.material.snackbar.Snackbar
 
 class CreateGroupActivity : AppCompatActivity() {
 
@@ -20,5 +21,28 @@ class CreateGroupActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         binding.viewModel = createGroupViewModel
+
+        createGroupViewModel.errorMessage.observe(this) { error ->
+            if (error != null) {
+                Snackbar.make(binding.createGroupActivityLayout, "", Snackbar.LENGTH_SHORT).also {
+                    it.setText(error)
+                    it.show()
+                }
+            }
+        }
+
+        createGroupViewModel.success.observe(this) {
+            if (it == true){
+                finish()
+            }
+        }
+
+        binding.createGroupActivitySaveButton.setOnClickListener {
+            createGroupViewModel.createGroup()
+        }
+
+        binding.createGroupActivityCancelButton.setOnClickListener {
+            finish()
+        }
     }
 }
