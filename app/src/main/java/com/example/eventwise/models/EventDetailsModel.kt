@@ -9,6 +9,6 @@ data class EventDetailsModel(
     var eventName: String,
     var groupId: Long,
     var location: String,
-    var organizerId: Long,
+    var organizer: Boolean,
     var type: String
 )
