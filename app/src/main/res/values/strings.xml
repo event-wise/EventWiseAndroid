@@ -43,4 +43,5 @@
     <string name="founded_people">Founded People</string>
     <string name="add_to_group">Add to Group</string>
     <string name="remove_from_group">Remove from Group</string>
+    <string name="choose_date_time">Choose Date Time</string>
 </resources>

@@ -1,17 +1,31 @@
 package com.example.eventwise.screens.updateevent
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.widget.ArrayAdapter
+import android.widget.DatePicker
+import android.widget.TimePicker
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityUpdateEventBinding
 import com.google.android.material.snackbar.Snackbar
+import java.util.*
 
-class UpdateEventActivity : AppCompatActivity() {
+class UpdateEventActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
+    TimePickerDialog.OnTimeSetListener {
+
+    var day = 0
+    var month: Int = 0
+    var year: Int = 0
+    var hour: Int = 0
+    var minute: Int = 0
+
 
     private lateinit var binding: ActivityUpdateEventBinding
 
@@ -57,6 +71,16 @@ class UpdateEventActivity : AppCompatActivity() {
             }
         }
 
+        binding.updateEventActivityChooseDateTimeButton.setOnClickListener {
+            val calendar: Calendar = Calendar.getInstance()
+            day = calendar.get(Calendar.DAY_OF_MONTH)
+            month = calendar.get(Calendar.MONTH)
+            year = calendar.get(Calendar.YEAR)
+            val datePickerDialog = DatePickerDialog(this@UpdateEventActivity, this@UpdateEventActivity,
+                year, month, day)
+            datePickerDialog.show()
+        }
+
         updateEventViewModel.success.observe(this) {
             if (it == true){
                 finish()
@@ -70,6 +94,19 @@ class UpdateEventActivity : AppCompatActivity() {
         binding.updateEventActivitySaveButton.setOnClickListener {
             updateEventViewModel.updateEvent()
         }
+    }
+
+    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+        val calendar: Calendar = Calendar.getInstance()
+        hour = calendar.get(Calendar.HOUR)
+        minute = calendar.get(Calendar.MINUTE)
+        val timePickerDialog = TimePickerDialog(this@UpdateEventActivity, this@UpdateEventActivity, hour, minute,
+            DateFormat.is24HourFormat(this))
+        timePickerDialog.show()
+    }
+    override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
+        val dateTimeText = "$hour:$minute $day/$month/$year"
+        binding.updateEventActivityEditTextEventDateTime.text = dateTimeText
     }
 
     companion object {
