@@ -5,5 +5,6 @@ data class RegisterRequestModel(
     var email: String?,
     var location: String?,
     var password: String?,
+    var confirmPassword: String?,
     var username: String?
 )

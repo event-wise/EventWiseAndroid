@@ -13,6 +13,7 @@ class SignUpRepository {
         email: String,
         location: String,
         password: String,
+        passwordConfirmation: String,
         username: String
     ){
         val request = GatewayApi.gatewayService.register(
@@ -21,6 +22,7 @@ class SignUpRepository {
                 email = email,
                 location = location,
                 password = password,
+                confirmPassword = passwordConfirmation,
                 username = username
             )
         )
