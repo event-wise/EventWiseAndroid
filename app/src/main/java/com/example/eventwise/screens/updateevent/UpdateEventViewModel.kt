@@ -3,6 +3,8 @@ package com.example.eventwise.screens.updateevent
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.eventwise.helperfunctions.dateToInstantConverter
+import com.example.eventwise.helperfunctions.instantToDateConverter
 import kotlinx.coroutines.launch
 
 class UpdateEventViewModel(
@@ -34,7 +36,7 @@ class UpdateEventViewModel(
                 location = eventLocation.value.orEmpty(),
                 type = eventType.value.orEmpty(),
                 description = eventDescription.value.orEmpty(),
-                dateTime = eventTime.value.orEmpty(),
+                dateTime = dateToInstantConverter(eventTime.value.orEmpty()),
                 groupId = groupId
             )
         }
@@ -44,7 +46,7 @@ class UpdateEventViewModel(
         viewModelScope.launch {
             val eventDetails = updateEventRepository.getEventDetails(eventId = eventId)
             eventName.value = eventDetails?.eventName.orEmpty()
-            eventTime.value = eventDetails?.dateTime.orEmpty()
+            eventTime.value = instantToDateConverter(eventDetails?.dateTime.orEmpty())
             eventLocation.value = eventDetails?.location.orEmpty()
             eventType.value = eventDetails?.type.orEmpty()
             eventDescription.value = eventDetails?.description.orEmpty()

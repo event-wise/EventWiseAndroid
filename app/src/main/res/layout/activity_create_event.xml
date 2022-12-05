@@ -81,7 +81,7 @@
                             android:layout_marginStart="12dp"
                             android:inputType="text"
                             android:layout_gravity="center"
-                            android:text="@string/event_time"
+                            android:text="@={viewModel.eventTime}"
                             android:paddingVertical="18dp"
                             android:paddingHorizontal="@dimen/margin_medium"
                             android:textSize="@dimen/text_size_medium" />

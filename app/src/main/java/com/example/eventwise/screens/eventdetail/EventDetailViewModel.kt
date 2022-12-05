@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.eventwise.helperfunctions.instantToDateConverter
 import com.example.eventwise.models.EventDetailsModel
 import com.example.eventwise.services.Constants
 import kotlinx.coroutines.launch
@@ -27,7 +28,7 @@ class EventDetailViewModel(
         "Location: " + eventDetail.value?.location
     }
     val eventTime = Transformations.map(eventDetail){
-        "Time: " + eventDetail.value?.dateTime
+        "Time: " + instantToDateConverter(eventDetail.value?.dateTime.orEmpty())
     }
     val eventType = Transformations.map(eventDetail){
         "Type: " + eventDetail.value?.type
