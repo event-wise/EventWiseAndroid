@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
@@ -31,6 +32,8 @@ class UserSearchActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         binding.viewModel = userSearchViewModel
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         userSearchViewModel.userFound.observe(this){
             binding.userSearchActivityFoundedPeopleLayout.visibility = if (it == true){
@@ -70,7 +73,16 @@ class UserSearchActivity : AppCompatActivity() {
                 finish()
             }
         }
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     companion object {

@@ -13,6 +13,7 @@ import com.example.eventwise.databinding.FragmentHomeUserBinding
 import com.example.eventwise.screens.changepassword.ChangePasswordActivity
 import com.example.eventwise.screens.login.LoginActivity
 import com.example.eventwise.services.Constants
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -44,6 +45,7 @@ class HomeUserFragment : Fragment() {
 
         binding.createEventActivitySaveButton.setOnClickListener {
             viewModel.updateProfileInformation()
+            binding.homeUserFragmentEditTextDisplayedUsername.clearFocus()
         }
 
         binding.createEventActivityLogOutButton.setOnClickListener {
@@ -52,6 +54,21 @@ class HomeUserFragment : Fragment() {
             Constants.GLOBAL_USER_ID = -1
             startActivity(Intent(requireActivity(), LoginActivity::class.java))
             requireActivity().finish()
+        }
+
+        binding.createEventActivityDeleteAccountButton.setOnClickListener {
+            context?.let { it1 ->
+                MaterialAlertDialogBuilder(it1)
+                    .setMessage(resources.getString(R.string.sure_delete_account))
+                    .setNegativeButton(resources.getString(R.string.no)) { dialog, which ->
+                        dialog.dismiss()
+                    }
+                    .setPositiveButton(resources.getString(R.string.yes)) { dialog, which ->
+                        viewModel.deleteAccount()
+                        requireActivity().finish()
+                    }
+                    .show()
+            }
         }
 
         viewModel.errorMessage.observe(requireActivity()) { error ->

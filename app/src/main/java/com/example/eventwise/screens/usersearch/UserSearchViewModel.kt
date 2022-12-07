@@ -24,8 +24,6 @@ class UserSearchViewModel(
     fun searchMember(){
         viewModelScope.launch {
             val searchResponseModel = userSearchRepository.searchMember(
-                success,
-                errorMessage,
                 groupId,
                 usernameSearch.value.toString()
             )

@@ -18,6 +18,7 @@ class UpdateEventViewModel(
     val eventLocation: MutableLiveData<String> = MutableLiveData<String>()
     val eventType: MutableLiveData<String> = MutableLiveData<String>()
     val eventDescription: MutableLiveData<String> = MutableLiveData<String>()
+    val eventOwner : MutableLiveData<Boolean> = MutableLiveData(true)
 
     val errorMessage: MutableLiveData<String> = MutableLiveData(null)
     val success: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -42,6 +43,14 @@ class UpdateEventViewModel(
         }
     }
 
+    fun deleteEvent(){
+        viewModelScope.launch {
+            updateEventRepository.deleteEvent(
+                success, errorMessage, eventId
+            )
+        }
+    }
+
     private fun getEventDetails(){
         viewModelScope.launch {
             val eventDetails = updateEventRepository.getEventDetails(eventId = eventId)
@@ -50,6 +59,7 @@ class UpdateEventViewModel(
             eventLocation.value = eventDetails?.location.orEmpty()
             eventType.value = eventDetails?.type.orEmpty()
             eventDescription.value = eventDetails?.description.orEmpty()
+            eventOwner.value = eventDetails?.organizer
         }
     }
 }

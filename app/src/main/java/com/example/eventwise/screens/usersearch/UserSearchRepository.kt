@@ -8,8 +8,6 @@ import com.example.eventwise.services.GatewayApi
 class UserSearchRepository {
 
     suspend fun searchMember(
-        success: MutableLiveData<Boolean>,
-        errorMessage: MutableLiveData<String>,
         groupId: Long,
         search: String
     ) : SearchResponseModel? {
@@ -26,12 +24,22 @@ class UserSearchRepository {
         groupId: Long,
         userId: Long
     ){
-        GatewayApi.gatewayService.addRemoveMember(
+        val request = GatewayApi.gatewayService.addRemoveMember(
             MemberAddRemoveModel(
                 groupId = groupId,
                 subjectUserId = userId
             )
         )
+        if (request.code() in 200..299){
+            errorMessage.value = request.errorBody().toString()
+            success.value = request.body()?.success
+            if (success.value == false){
+                errorMessage.value = request.body()?.message.toString()
+            }
+        } else {
+            success.value = false
+            errorMessage.value = request.errorBody().toString()
+        }
     }
 
 }

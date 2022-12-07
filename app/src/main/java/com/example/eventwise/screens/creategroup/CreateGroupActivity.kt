@@ -1,6 +1,7 @@
 package com.example.eventwise.screens.creategroup
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -21,6 +22,8 @@ class CreateGroupActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         binding.viewModel = createGroupViewModel
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         createGroupViewModel.errorMessage.observe(this) { error ->
             if (error != null) {
@@ -43,6 +46,16 @@ class CreateGroupActivity : AppCompatActivity() {
 
         binding.createGroupActivityCancelButton.setOnClickListener {
             finish()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

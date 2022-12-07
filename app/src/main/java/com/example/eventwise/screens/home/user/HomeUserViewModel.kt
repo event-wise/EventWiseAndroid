@@ -57,4 +57,12 @@ class HomeUserViewModel(
         }
     }
 
+    fun deleteAccount(){
+        viewModelScope.launch {
+            homeUserRepository.deleteAccount(
+                errorMessage
+            )
+        }
+    }
+
 }

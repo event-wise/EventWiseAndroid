@@ -41,4 +41,15 @@ class HomeUserRepository {
             errorMessage.value = null
         }
     }
+
+    suspend fun deleteAccount(
+        errorMessage: MutableLiveData<String>
+    ){
+        val request = GatewayApi.gatewayService.deleteAccount()
+        if (request.code() !in 200..299){
+            errorMessage.value = request.errorBody().toString()
+        } else {
+            errorMessage.value = null
+        }
+    }
 }

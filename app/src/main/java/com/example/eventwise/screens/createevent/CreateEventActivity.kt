@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.format.DateFormat
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.DatePicker
 import android.widget.TimePicker
@@ -44,6 +45,8 @@ class CreateEventActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
         binding.lifecycleOwner = this
 
         binding.viewModel = createEventViewModel
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         createEventViewModel.errorMessage.observe(this) { error ->
             if (error != null) {
@@ -95,12 +98,24 @@ class CreateEventActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
         }
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         val calendar: Calendar = Calendar.getInstance()
         hour = calendar.get(Calendar.HOUR)
         minute = calendar.get(Calendar.MINUTE)
         val timePickerDialog = TimePickerDialog(this@CreateEventActivity, this@CreateEventActivity, hour, minute,
-            DateFormat.is24HourFormat(this))
+            DateFormat.is24HourFormat(this)).also {
+        }
+        // TODO: fix the bug for 24 hours
         timePickerDialog.show()
     }
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {

@@ -6,6 +6,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.format.DateFormat
+import android.view.MenuItem
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.DatePicker
 import android.widget.TimePicker
@@ -14,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityUpdateEventBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
@@ -46,6 +49,8 @@ class UpdateEventActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
         binding.lifecycleOwner = this
 
         binding.viewModel = updateEventViewModel
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         ArrayAdapter.createFromResource(
             this,
@@ -93,6 +98,35 @@ class UpdateEventActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
 
         binding.updateEventActivitySaveButton.setOnClickListener {
             updateEventViewModel.updateEvent()
+        }
+
+        binding.updateEventActivityDeleteEventButton.setOnClickListener {
+            MaterialAlertDialogBuilder(this)
+                .setMessage(resources.getString(R.string.sure_delete_event))
+                .setNegativeButton(resources.getString(R.string.no)) { dialog, which ->
+                    dialog.dismiss()
+                }
+                .setPositiveButton(resources.getString(R.string.yes)) { dialog, which ->
+                    updateEventViewModel.deleteEvent()
+                }
+                .show()
+        }
+
+        updateEventViewModel.eventOwner.observe(this) {
+            if (it == false){
+                updateEventViewModel.errorMessage.value = "You can not edit this event!"
+                finish()
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

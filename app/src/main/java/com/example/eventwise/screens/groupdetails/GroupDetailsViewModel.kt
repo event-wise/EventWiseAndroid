@@ -15,19 +15,23 @@ class GroupDetailsViewModel(
 
     private val groupDetailsModel: MutableLiveData<GroupDetailsModel> = MutableLiveData()
 
+    val groupName = Transformations.map(groupDetailsModel){
+        it.groupName
+    }
     val groupDescription = Transformations.map(groupDetailsModel){
         "Description: " + it?.description
     }
     val groupLocation = Transformations.map(groupDetailsModel){
         "Location: " + it?.location
     }
+    val isGroupOwner = MutableLiveData(false)
 
     val groupMembersList: MutableLiveData<List<String>> = MutableLiveData()
-
     val activeEventsList: MutableLiveData<List<EventsModel>> = MutableLiveData()
-
     val logsList: MutableLiveData<List<String>> = MutableLiveData()
 
+    val errorMessage: MutableLiveData<String> = MutableLiveData(null)
+    val success: MutableLiveData<Boolean> = MutableLiveData(false)
 
     init {
         getGroupDetails()
@@ -39,10 +43,16 @@ class GroupDetailsViewModel(
             groupDetailsModel.value?.events?.forEach {
                 it.groupId = groupId
             }
+            isGroupOwner.value = groupDetailsModel.value?.owner ?: false
             groupMembersList.value =  groupDetailsModel.value?.members
             activeEventsList.value = groupDetailsModel.value?.events
             logsList.value = groupDetailsModel.value?.logs
         }
     }
 
+    fun exitFromGroup(){
+        viewModelScope.launch {
+            groupDetailRepository.exitFromGroup(success, errorMessage, groupId)
+        }
+    }
 }

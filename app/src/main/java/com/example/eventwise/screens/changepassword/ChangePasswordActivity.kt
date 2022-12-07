@@ -2,6 +2,7 @@ package com.example.eventwise.screens.changepassword
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,8 @@ class ChangePasswordActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_change_password)
 
         binding.lifecycleOwner = this
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.viewModel = changePasswordViewModel
 
@@ -47,6 +50,16 @@ class ChangePasswordActivity : AppCompatActivity() {
 
         binding.changePasswordActivityCancelButton.setOnClickListener {
             finish()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

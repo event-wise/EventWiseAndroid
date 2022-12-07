@@ -3,13 +3,18 @@ package com.example.eventwise.screens.groupdetails
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityGroupDetailBinding
 import com.example.eventwise.screens.createevent.CreateEventActivity
+import com.example.eventwise.screens.updategroup.UpdateGroupActivity
 import com.example.eventwise.screens.usersearch.UserSearchActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 
 class GroupDetailActivity : AppCompatActivity() {
 
@@ -22,6 +27,12 @@ class GroupDetailActivity : AppCompatActivity() {
         GroupDetailsViewModelFactory(groupId)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.group_details_toolbar_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -30,6 +41,12 @@ class GroupDetailActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         binding.viewModel = groupDetailViewModel
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        groupDetailViewModel.groupName.observe(this){
+            this.title = it
+        }
 
         binding.groupDetailActivityActiveEventRecyclerView.adapter = ActiveEventsRecyclerViewAdapter()
 
@@ -43,6 +60,52 @@ class GroupDetailActivity : AppCompatActivity() {
 
         binding.groupDetailActivityAddRemoveButton.setOnClickListener {
             UserSearchActivity.newInstance(this, groupId)
+        }
+
+        groupDetailViewModel.errorMessage.observe(this) { error ->
+            if (error != null) {
+                Snackbar.make(binding.groupDetailsActivityLayout, "", Snackbar.LENGTH_SHORT).also {
+                    it.setText(error)
+                    it.show()
+                }
+            }
+        }
+
+        groupDetailViewModel.success.observe(this) {
+            if (it == true){
+                finish()
+            }
+        }
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            R.id.group_menu_item_update_group -> {
+                if (groupDetailViewModel.isGroupOwner.value == true) {
+                    UpdateGroupActivity.newInstance(this, groupId)
+                    false
+                } else {
+                    false
+                }
+            }
+            R.id.group_menu_item_exit_from_group -> {
+                MaterialAlertDialogBuilder(this)
+                    .setMessage(resources.getString(R.string.sure_exit_from_group))
+                    .setNegativeButton(resources.getString(R.string.no)) { dialog, which ->
+                        dialog.dismiss()
+                    }
+                    .setPositiveButton(resources.getString(R.string.yes)) { dialog, which ->
+                        groupDetailViewModel.exitFromGroup()
+                    }
+                    .show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

@@ -19,19 +19,19 @@ class EventDetailViewModel(
     val memberList: MutableLiveData<List<String>?> = MutableLiveData()
 
     val eventName = Transformations.map(eventDetail){
-        eventDetail.value?.eventName
+        it.eventName
     }
     val eventDescription = Transformations.map(eventDetail){
-        "Description: " + eventDetail.value?.description
+        "Description: " + it.description
     }
     val eventLocation = Transformations.map(eventDetail){
-        "Location: " + eventDetail.value?.location
+        "Location: " + it.location
     }
     val eventTime = Transformations.map(eventDetail){
-        "Time: " + instantToDateConverter(eventDetail.value?.dateTime.orEmpty())
+        "Time: " + instantToDateConverter(it.dateTime.orEmpty())
     }
     val eventType = Transformations.map(eventDetail){
-        "Type: " + eventDetail.value?.type
+        "Type: " + it.type
     }
     val eventOwner : MutableLiveData<Boolean> = MutableLiveData(false)
 

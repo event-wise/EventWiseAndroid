@@ -29,15 +29,33 @@ class UpdateEventRepository {
                 type = type
             )
         )
-        if (request.code() !in 200..299){
+        if (request.code() in 200..299){
             errorMessage.value = request.errorBody().toString()
             success.value = request.body()?.success
             if (success.value == false){
                 errorMessage.value = request.body()?.message.toString()
             }
         } else {
-            success.value = true
-            errorMessage.value = null
+            success.value = false
+            errorMessage.value = request.errorBody().toString()
+        }
+    }
+
+    suspend fun deleteEvent(
+        success: MutableLiveData<Boolean>,
+        errorMessage: MutableLiveData<String>,
+        eventId: Long
+    ){
+        val request = GatewayApi.gatewayService.deleteEvent(eventId)
+        if (request.code() in 200..299){
+            errorMessage.value = request.errorBody().toString()
+            success.value = request.body()?.success
+            if (success.value == false){
+                errorMessage.value = request.body()?.message.toString()
+            }
+        } else {
+            success.value = false
+            errorMessage.value = request.errorBody().toString()
         }
     }
 

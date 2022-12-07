@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.opengl.Visibility
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -33,6 +34,12 @@ class EventDetailActivity : AppCompatActivity() {
 
         binding.eventDetailActivityMemberRecyclerView.adapter = MemberListRecyclerViewAdapter()
 
+        eventDetailViewModel.eventName.observe(this) {
+            this.title = it
+        }
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         binding.eventDetailActivityRejectButton.setOnClickListener {
             eventDetailViewModel.rejectEvent()
         }
@@ -57,6 +64,16 @@ class EventDetailActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         eventDetailViewModel.retrieveEventDetail()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     companion object {
