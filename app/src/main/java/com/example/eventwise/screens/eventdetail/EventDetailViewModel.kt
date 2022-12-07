@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.eventwise.helperfunctions.instantToDateConverter
 import com.example.eventwise.models.EventDetailsModel
+import com.example.eventwise.services.Constants
 import kotlinx.coroutines.launch
 
 class EventDetailViewModel(

@@ -92,6 +92,7 @@
                         android:backgroundTint="@color/primary_color_scale4">
 
                         <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/userSearchActivityUsernameTextView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/username"

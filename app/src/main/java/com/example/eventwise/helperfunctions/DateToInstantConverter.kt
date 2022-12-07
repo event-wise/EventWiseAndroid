@@ -2,7 +2,7 @@ package com.example.eventwise.helperfunctions
 
 import android.os.Build
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 
 fun dateToInstantConverter(dateTimeString: String) : String {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
