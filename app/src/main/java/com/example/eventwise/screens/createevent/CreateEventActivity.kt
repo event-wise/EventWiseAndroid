@@ -16,7 +16,6 @@ import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityCreateEventBinding
 import com.google.android.material.snackbar.Snackbar
-import java.time.Year
 import java.util.*
 
 class CreateEventActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,

@@ -1,6 +1,6 @@
 package com.example.eventwise.helperfunctions
 
-import com.example.eventwise.models.*
+import com.example.eventwise.models.RegisterRequestModel
 import com.example.eventwise.services.GatewayApi
 
 suspend fun mockDataGenerate(){

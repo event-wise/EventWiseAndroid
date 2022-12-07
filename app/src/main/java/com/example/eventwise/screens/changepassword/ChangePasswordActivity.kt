@@ -3,7 +3,6 @@ package com.example.eventwise.screens.changepassword
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil

@@ -1,6 +1,5 @@
 package com.example.eventwise.screens.signup
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.activity.viewModels

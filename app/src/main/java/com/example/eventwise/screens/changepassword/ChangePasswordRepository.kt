@@ -1,10 +1,8 @@
 package com.example.eventwise.screens.changepassword
 
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.example.eventwise.models.PasswordChangeRequestModel
 import com.example.eventwise.services.GatewayApi
-import kotlin.coroutines.coroutineContext
 
 class ChangePasswordRepository {
 
