@@ -5,7 +5,6 @@ import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.text.format.DateFormat
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.DatePicker
@@ -130,14 +129,18 @@ class UpdateEventActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         val calendar: Calendar = Calendar.getInstance()
+        this.year = year
+        this.month = month + 1
+        this.day = dayOfMonth
         hour = calendar.get(Calendar.HOUR)
         minute = calendar.get(Calendar.MINUTE)
-        val timePickerDialog = TimePickerDialog(this@UpdateEventActivity, this@UpdateEventActivity, hour, minute,
-            DateFormat.is24HourFormat(this))
+        val timePickerDialog = TimePickerDialog(this@UpdateEventActivity, this@UpdateEventActivity, hour, minute, true)
         timePickerDialog.show()
     }
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
-        val dateTimeText = "$hour:$minute $day/$month/$year"
+        this.hour = hourOfDay
+        this.minute = minute
+        val dateTimeText = "${this.hour}:${this.minute} ${this.day}/${this.month}/${this.year}"
         binding.updateEventActivityEditTextEventDateTime.text = dateTimeText
     }
 
