@@ -32,6 +32,14 @@ class HomeGroupsFragment : Fragment() {
 
         binding.fragmentHomeGroupsGroupRecyclerView.adapter = GroupsRecyclerViewAdapter()
 
+        viewModel.haveAnyGroup.observe(requireActivity()) {
+            if (it == true) {
+                binding.fragmentHomeGroupsWarningTextView.visibility = View.GONE
+            } else {
+                binding.fragmentHomeGroupsWarningTextView.visibility = View.VISIBLE
+            }
+        }
+
         binding.fragmentHomeGroupsCreateGroupButton.setOnClickListener {
             startActivity(Intent(requireActivity(), CreateGroupActivity::class.java))
         }

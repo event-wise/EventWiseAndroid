@@ -32,6 +32,7 @@ class ChangePasswordActivity : AppCompatActivity() {
             if (error != null) {
                 Snackbar.make(binding.changePasswordActivityLayout, "", Snackbar.LENGTH_SHORT).also {
                     it.setText(error)
+                    it.setTextMaxLines(10)
                     it.show()
                 }
             }

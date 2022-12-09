@@ -13,6 +13,8 @@ class HomeGroupsViewModel(
 
     private val _groupList = MutableLiveData<List<GroupsModel>>()
 
+    val haveAnyGroup: MutableLiveData<Boolean> = MutableLiveData(false)
+
     val groupList: LiveData<List<GroupsModel>>
         get() = _groupList
 
@@ -23,6 +25,7 @@ class HomeGroupsViewModel(
     fun refreshGroupList(){
         viewModelScope.launch {
             _groupList.value = homeGroupsRepository.listUserGroups()
+            haveAnyGroup.value = _groupList.value.orEmpty().isNotEmpty()
         }
     }
 }

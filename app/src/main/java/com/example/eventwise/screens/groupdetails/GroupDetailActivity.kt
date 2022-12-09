@@ -49,6 +49,12 @@ class GroupDetailActivity : AppCompatActivity() {
             this.title = it
         }
 
+        groupDetailViewModel.isDeleted.observe(this) {
+            if (it == true){
+                finish()
+            }
+        }
+
         binding.groupDetailActivityActiveEventRecyclerView.adapter = ActiveEventsRecyclerViewAdapter()
 
         binding.groupDetailActivityMemberRecyclerView.adapter = MemberListRecyclerViewAdapter()
@@ -67,6 +73,7 @@ class GroupDetailActivity : AppCompatActivity() {
             if (error != null) {
                 Snackbar.make(binding.groupDetailsActivityLayout, "", Snackbar.LENGTH_SHORT).also {
                     it.setText(error)
+                    it.setTextMaxLines(10)
                     it.show()
                 }
             }

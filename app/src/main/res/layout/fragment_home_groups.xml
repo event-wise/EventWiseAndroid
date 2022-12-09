@@ -22,6 +22,17 @@
             android:layout_height="@dimen/no_size"
             android:layout_weight="1"/>
 
+        <TextView
+            android:id="@+id/fragmentHomeGroupsWarningTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/you_don_t_haven_t_joined_any_groups_yet"
+            android:textSize="@dimen/text_size_large"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:layout_marginVertical="@dimen/margin_large"
+            android:layout_marginHorizontal="@dimen/margin_medium"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fragmentHomeGroupsGroupRecyclerView"
             android:layout_width="match_parent"

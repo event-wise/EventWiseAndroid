@@ -61,6 +61,7 @@ class UserSearchActivity : AppCompatActivity() {
             if (error != null) {
                 Snackbar.make(binding.userSearchActivityLayout, "", Snackbar.LENGTH_SHORT).also {
                     it.setText(error)
+                    it.setTextMaxLines(10)
                     it.show()
                 }
             }

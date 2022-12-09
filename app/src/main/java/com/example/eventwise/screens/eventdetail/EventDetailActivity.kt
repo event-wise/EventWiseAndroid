@@ -38,6 +38,12 @@ class EventDetailActivity : AppCompatActivity() {
             this.title = it
         }
 
+        eventDetailViewModel.isDeleted.observe(this) {
+            if (it == true){
+                finish()
+            }
+        }
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.eventDetailActivityRejectButton.setOnClickListener {

@@ -66,6 +66,7 @@ class HomeUserFragment : Fragment() {
                     .setPositiveButton(resources.getString(R.string.yes)) { dialog, which ->
                         viewModel.deleteAccount()
                         requireActivity().finish()
+                        startActivity(Intent(requireActivity(), LoginActivity::class.java))
                     }
                     .show()
             }
@@ -75,6 +76,7 @@ class HomeUserFragment : Fragment() {
             if (error != null) {
                 Snackbar.make(binding.homeUserFragmentLayout, "", Snackbar.LENGTH_SHORT).also {
                     it.setText(error)
+                    it.setTextMaxLines(10)
                     it.show()
                 }
             }

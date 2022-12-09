@@ -31,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
             if (error != null) {
                 Snackbar.make(binding.loginActivityLayout, "", Snackbar.LENGTH_SHORT).also {
                     it.setText(error)
+                    it.setTextMaxLines(10)
                     it.show()
                 }
             }

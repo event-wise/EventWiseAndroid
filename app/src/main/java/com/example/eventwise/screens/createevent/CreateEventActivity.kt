@@ -50,6 +50,7 @@ class CreateEventActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
             if (error != null) {
                 Snackbar.make(binding.createEventActivityLayout, "", Snackbar.LENGTH_SHORT).also {
                     it.setText(error)
+                    it.setTextMaxLines(10)
                     it.show()
                 }
             }

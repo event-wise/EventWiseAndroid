@@ -78,7 +78,7 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/groupDetailActivityMemberRecyclerView"
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
+                            android:layout_height="130dp"
                             app:memberListBindingAdapter="@{viewModel.groupMembersList}"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 

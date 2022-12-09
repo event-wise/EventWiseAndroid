@@ -13,17 +13,14 @@ class GroupDetailsViewModel(
     private val groupDetailRepository: GroupDetailRepository = GroupDetailRepository()
 ) : ViewModel() {
 
+    val isDeleted: MutableLiveData<Boolean> = MutableLiveData(false)
+
     private val groupDetailsModel: MutableLiveData<GroupDetailsModel> = MutableLiveData()
 
-    val groupName = Transformations.map(groupDetailsModel){
-        it.groupName
-    }
-    val groupDescription = Transformations.map(groupDetailsModel){
-        "Description: " + it?.description
-    }
-    val groupLocation = Transformations.map(groupDetailsModel){
-        "Location: " + it?.location
-    }
+    val groupName: MutableLiveData<String> = MutableLiveData()
+    val groupDescription: MutableLiveData<String> = MutableLiveData()
+    val groupLocation: MutableLiveData<String> = MutableLiveData()
+
     val isGroupOwner = MutableLiveData(false)
 
     val groupMembersList: MutableLiveData<List<String>> = MutableLiveData()
@@ -40,9 +37,15 @@ class GroupDetailsViewModel(
     fun getGroupDetails(){
         viewModelScope.launch {
             groupDetailsModel.value  = groupDetailRepository.getGroupDetails(groupId)
+            if (groupDetailsModel.value == null){
+                isDeleted.value = true
+            }
             groupDetailsModel.value?.events?.forEach {
                 it.groupId = groupId
             }
+            groupName.value = groupDetailsModel.value?.groupName.orEmpty()
+            groupDescription.value = "Description: " + groupDetailsModel.value?.description.orEmpty()
+            groupLocation.value = "Location: " + groupDetailsModel.value?.location.orEmpty()
             isGroupOwner.value = groupDetailsModel.value?.owner ?: false
             groupMembersList.value =  groupDetailsModel.value?.members
             activeEventsList.value = groupDetailsModel.value?.events

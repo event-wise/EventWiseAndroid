@@ -14,25 +14,18 @@ class EventDetailViewModel(
     private val eventDetailRepository: EventDetailRepository = EventDetailRepository()
 ) : ViewModel() {
 
+    val isDeleted: MutableLiveData<Boolean> = MutableLiveData(false)
+
     var eventDetail: MutableLiveData<EventDetailsModel> = MutableLiveData()
 
     val memberList: MutableLiveData<List<String>?> = MutableLiveData()
 
-    val eventName = Transformations.map(eventDetail){
-        it?.eventName
-    }
-    val eventDescription = Transformations.map(eventDetail){
-        "Description: " + it?.description.orEmpty()
-    }
-    val eventLocation = Transformations.map(eventDetail){
-        "Location: " + it?.location.orEmpty()
-    }
-    val eventTime = Transformations.map(eventDetail){
-        "Time: " + instantToDateConverter(it?.dateTime.orEmpty())
-    }
-    val eventType = Transformations.map(eventDetail){
-        "Type: " + it?.type
-    }
+    val eventName: MutableLiveData<String> = MutableLiveData()
+    val eventDescription: MutableLiveData<String> = MutableLiveData()
+    val eventLocation: MutableLiveData<String> = MutableLiveData()
+    val eventTime: MutableLiveData<String> = MutableLiveData()
+    val eventType: MutableLiveData<String> = MutableLiveData()
+
     val eventOwner : MutableLiveData<Boolean> = MutableLiveData(false)
 
     init {
@@ -42,6 +35,14 @@ class EventDetailViewModel(
     fun retrieveEventDetail(){
         viewModelScope.launch {
             eventDetail.value = eventDetailRepository.eventDetailInformation(eventId)
+            if (eventDetail.value == null){
+                isDeleted.value = true
+            }
+            eventName.value = eventDetail.value?.eventName.orEmpty()
+            eventDescription.value = "Description: " + eventDetail.value?.description.orEmpty()
+            eventLocation.value = "Location: " + eventDetail.value?.location.orEmpty()
+            eventTime.value = "Time: " + instantToDateConverter(eventDetail.value?.dateTime.orEmpty())
+            eventType.value = "Type: " + eventDetail.value?.type.orEmpty()
             eventOwner.value = eventDetail.value?.organizer ?: false
             memberList.value = eventDetail.value?.acceptedMembers ?: listOf()
         }

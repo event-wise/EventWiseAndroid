@@ -37,6 +37,7 @@ class UpdateGroupActivity : AppCompatActivity() {
             if (error != null) {
                 Snackbar.make(binding.updateGroupActivityLayout, "", Snackbar.LENGTH_SHORT).also {
                     it.setText(error)
+                    it.setTextMaxLines(10)
                     it.show()
                 }
             }

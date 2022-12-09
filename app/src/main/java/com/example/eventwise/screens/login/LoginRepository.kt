@@ -21,12 +21,20 @@ class LoginRepository {
             Constants.BEARER_TOKEN = request.body()?.token.orEmpty()
             Constants.GLOBAL_USER_ID = request.body()?.id ?: 0
 
-            if (request.code() !in 200..299) {
+            if (request.code() in 200..299) {
                 errorMessage.value = request.errorBody().toString()
-                success.value = false
-            } else {
                 success.value = true
-                errorMessage.value = null
+            } else {
+                success.value = false
+                errorMessage.value = request.errorBody().toString()
+
+                try {
+                    errorMessage.value = request.errorBody()?.let {
+                        GatewayApi.errorConverter.convert(it)?.messages?.joinToString("\n")
+                    }
+                } catch (e: Exception) {
+                    errorMessage.value = e.message
+                }
             }
         } catch (e: Exception) {
             Log.e("Login", e.toString())
