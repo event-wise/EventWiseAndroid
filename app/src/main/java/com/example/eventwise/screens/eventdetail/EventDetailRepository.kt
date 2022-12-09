@@ -6,7 +6,11 @@ import com.example.eventwise.services.GatewayApi
 class EventDetailRepository {
 
     suspend fun eventDetailInformation(eventId: Long) : EventDetailsModel? {
-        return GatewayApi.gatewayService.getEventDetails(eventId).body()
+        return try {
+            GatewayApi.gatewayService.getEventDetails(eventId).body()
+        } catch (e: java.lang.Exception){
+            null
+        }
     }
 
     suspend fun acceptEvent(eventId: Long) {

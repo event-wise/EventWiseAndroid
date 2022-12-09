@@ -63,6 +63,9 @@ class EventDetailActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        if (eventId == Long.MIN_VALUE){
+            finish()
+        }
         eventDetailViewModel.retrieveEventDetail()
     }
 
@@ -78,7 +81,6 @@ class EventDetailActivity : AppCompatActivity() {
 
     companion object {
         private const val KEY_EVENT_ID = "event_id"
-        private const val KEY_GROUP_ID = "group_id"
 
         val newInstance = { context: Context, eventId: Long ->
             val intent = Intent(context, EventDetailActivity::class.java)

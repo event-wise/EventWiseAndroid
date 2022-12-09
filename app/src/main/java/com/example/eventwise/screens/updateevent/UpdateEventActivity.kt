@@ -117,6 +117,13 @@ class UpdateEventActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (groupId == Long.MIN_VALUE || eventId == Long.MIN_VALUE){
+            finish()
+        }
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             android.R.id.home -> {
@@ -140,7 +147,7 @@ class UpdateEventActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
         this.hour = hourOfDay
         this.minute = minute
-        val dateTimeText = "${this.hour}:${this.minute} ${this.day}/${this.month}/${this.year}"
+        val dateTimeText = "${this.hour}:${this.minute} ${this.day}-${this.month}-${this.year}"
         binding.updateEventActivityEditTextEventDateTime.text = dateTimeText
     }
 

@@ -12,6 +12,8 @@ class UserSearchViewModel(
 
     val usernameSearch: MutableLiveData<String> = MutableLiveData()
 
+    val foundedUserName: MutableLiveData<String> = MutableLiveData()
+
     val userFound: MutableLiveData<Boolean> = MutableLiveData(false)
 
     val isMember: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -30,6 +32,7 @@ class UserSearchViewModel(
 
             userFound.value = searchResponseModel?.found
             isMember.value = searchResponseModel?.member
+            foundedUserName.value = searchResponseModel?.username
             userId = searchResponseModel?.id
         }
     }

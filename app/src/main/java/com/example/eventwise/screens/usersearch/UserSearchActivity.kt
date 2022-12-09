@@ -73,6 +73,13 @@ class UserSearchActivity : AppCompatActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (groupId == Long.MIN_VALUE){
+            finish()
+        }
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             android.R.id.home -> {

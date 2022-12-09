@@ -77,7 +77,6 @@ class GroupDetailActivity : AppCompatActivity() {
                 finish()
             }
         }
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -112,6 +111,9 @@ class GroupDetailActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        if (groupId == Long.MIN_VALUE){
+            finish()
+        }
         groupDetailViewModel.getGroupDetails()
     }
 

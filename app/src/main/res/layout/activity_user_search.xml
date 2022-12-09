@@ -95,7 +95,7 @@
                             android:id="@+id/userSearchActivityUsernameTextView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/username"
+                            android:text="@{viewModel.foundedUserName}"
                             android:textColor="@color/black"
                             android:paddingVertical="@dimen/margin_medium"
                             android:paddingHorizontal="@dimen/margin_medium"
