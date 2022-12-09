@@ -1,5 +1,6 @@
 package com.example.eventwise.screens.eventdetail
 
+import android.util.Log
 import com.example.eventwise.models.EventDetailsModel
 import com.example.eventwise.services.GatewayApi
 
@@ -9,15 +10,26 @@ class EventDetailRepository {
         return try {
             GatewayApi.gatewayService.getEventDetails(eventId).body()
         } catch (e: java.lang.Exception){
+            Log.e("EventDetail", e.toString())
             null
         }
     }
 
     suspend fun acceptEvent(eventId: Long) {
-        GatewayApi.gatewayService.acceptEvent(eventId)
+        try {
+            GatewayApi.gatewayService.acceptEvent(eventId)
+        } catch (e: Exception){
+            Log.e("EventDetail", e.toString())
+            return
+        }
     }
 
     suspend fun rejectEvent(eventId: Long) {
-        GatewayApi.gatewayService.rejectEvent(eventId)
+        try {
+            GatewayApi.gatewayService.rejectEvent(eventId)
+        } catch (e: Exception){
+            Log.e("EventDetail", e.toString())
+            return
+        }
     }
 }

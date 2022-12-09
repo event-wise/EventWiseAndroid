@@ -42,8 +42,8 @@ class EventDetailViewModel(
     fun retrieveEventDetail(){
         viewModelScope.launch {
             eventDetail.value = eventDetailRepository.eventDetailInformation(eventId)
-            eventOwner.value = eventDetail.value?.organizer
-            memberList.value = eventDetail.value?.acceptedMembers
+            eventOwner.value = eventDetail.value?.organizer ?: false
+            memberList.value = eventDetail.value?.acceptedMembers ?: listOf()
         }
     }
 

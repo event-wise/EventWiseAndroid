@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class LoginActivityViewModel(
-    private val loginActivityRepository: LoginActivityRepository = LoginActivityRepository()
+class LoginViewModel(
+    private val loginActivityRepository: LoginRepository = LoginRepository()
 ) : ViewModel() {
 
     val username: MutableLiveData<String> = MutableLiveData<String>()
