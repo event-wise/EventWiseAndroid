@@ -1,6 +1,7 @@
 package com.example.eventwise.helperfunctions
 
 import android.annotation.SuppressLint
+import android.util.Log
 import java.text.SimpleDateFormat
 import java.time.Instant
 import java.util.*
@@ -12,7 +13,8 @@ fun instantToDateConverter(instantString: String) : String {
                 Date.from(Instant.parse(instantString)
             )
         )
-    } catch (e: java.lang.Exception){
+    } catch (e: Exception){
+        Log.e("DateTimeConverter", e.toString())
         ""
     }
 }
