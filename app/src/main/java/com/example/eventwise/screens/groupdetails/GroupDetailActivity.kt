@@ -97,6 +97,7 @@ class GroupDetailActivity : AppCompatActivity() {
                     UpdateGroupActivity.newInstance(this, groupId)
                     false
                 } else {
+                    groupDetailViewModel.errorMessage.value = "You are not the group owner!"
                     false
                 }
             }

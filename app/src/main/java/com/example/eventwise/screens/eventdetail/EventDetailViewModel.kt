@@ -28,6 +28,8 @@ class EventDetailViewModel(
 
     val eventOwner : MutableLiveData<Boolean> = MutableLiveData(false)
 
+    val errorMessage: MutableLiveData<String> = MutableLiveData(null)
+
     init {
         retrieveEventDetail()
     }
@@ -50,14 +52,14 @@ class EventDetailViewModel(
 
     fun acceptEvent(){
         viewModelScope.launch {
-            eventDetailRepository.acceptEvent(eventId)
+            eventDetailRepository.acceptEvent(errorMessage, eventId)
             retrieveEventDetail()
         }
     }
 
     fun rejectEvent(){
         viewModelScope.launch {
-            eventDetailRepository.rejectEvent(eventId)
+            eventDetailRepository.rejectEvent(errorMessage, eventId)
             retrieveEventDetail()
         }
     }

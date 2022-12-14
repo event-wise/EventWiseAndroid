@@ -1,6 +1,7 @@
 package com.example.eventwise.services
 
 import com.example.eventwise.models.ErrorResponse
+import com.example.eventwise.models.Response
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.ResponseBody
@@ -24,4 +25,7 @@ object GatewayApi {
 
     val errorConverter: Converter<ResponseBody, ErrorResponse> =
         retrofit.responseBodyConverter(ErrorResponse::class.java, arrayOfNulls<Annotation>(0))
+
+    val responseConverter: Converter<ResponseBody, Response> =
+        retrofit.responseBodyConverter(Response::class.java, arrayOfNulls<Annotation>(0))
 }

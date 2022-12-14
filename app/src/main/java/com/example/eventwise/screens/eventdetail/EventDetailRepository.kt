@@ -1,6 +1,7 @@
 package com.example.eventwise.screens.eventdetail
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.example.eventwise.models.EventDetailsModel
 import com.example.eventwise.services.GatewayApi
 
@@ -15,18 +16,26 @@ class EventDetailRepository {
         }
     }
 
-    suspend fun acceptEvent(eventId: Long) {
+    suspend fun acceptEvent(
+        errorMessage: MutableLiveData<String>,
+        eventId: Long
+    ) {
         try {
-            GatewayApi.gatewayService.acceptEvent(eventId)
+            val request = GatewayApi.gatewayService.acceptEvent(eventId)
+            errorMessage.value = request.body()?.message
         } catch (e: Exception){
             Log.e("EventDetail", e.toString())
             return
         }
     }
 
-    suspend fun rejectEvent(eventId: Long) {
+    suspend fun rejectEvent(
+        errorMessage: MutableLiveData<String>,
+        eventId: Long
+    ) {
         try {
-            GatewayApi.gatewayService.rejectEvent(eventId)
+            val request = GatewayApi.gatewayService.rejectEvent(eventId)
+            errorMessage.value = request.body()?.message
         } catch (e: Exception){
             Log.e("EventDetail", e.toString())
             return

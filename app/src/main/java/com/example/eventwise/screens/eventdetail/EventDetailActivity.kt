@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityEventDetailBinding
 import com.example.eventwise.screens.updateevent.UpdateEventActivity
+import com.google.android.material.snackbar.Snackbar
 
 class EventDetailActivity : AppCompatActivity() {
 
@@ -41,6 +42,16 @@ class EventDetailActivity : AppCompatActivity() {
         eventDetailViewModel.isDeleted.observe(this) {
             if (it == true){
                 finish()
+            }
+        }
+
+        eventDetailViewModel.errorMessage.observe(this) { error ->
+            if (error != null) {
+                Snackbar.make(binding.eventDetailActivityLayout, "", Snackbar.LENGTH_SHORT).also {
+                    it.setText(error)
+                    it.setTextMaxLines(10)
+                    it.show()
+                }
             }
         }
 

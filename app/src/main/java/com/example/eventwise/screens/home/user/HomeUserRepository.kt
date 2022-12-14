@@ -18,6 +18,13 @@ class HomeUserRepository {
             } else {
                 errorMessage.value = null
             }
+            try {
+                errorMessage.value = request.errorBody()?.let {
+                    GatewayApi.responseConverter.convert(it)?.message
+                }
+            } catch (e: Exception) {
+                errorMessage.value = e.message
+            }
             request.body()
         } catch (e: Exception){
             Log.e("HomeUser", e.toString())
@@ -34,7 +41,14 @@ class HomeUserRepository {
             if (request.code() !in 200..299) {
                 errorMessage.value = request.errorBody().toString()
             } else {
-                errorMessage.value = null
+                errorMessage.value = request.body()?.message
+            }
+            try {
+                errorMessage.value = request.errorBody()?.let {
+                    GatewayApi.responseConverter.convert(it)?.message
+                }
+            } catch (e: Exception) {
+                errorMessage.value = e.message
             }
         } catch (e: Exception){
             Log.e("HomeUser", e.toString())
@@ -49,7 +63,14 @@ class HomeUserRepository {
             if (request.code() !in 200..299) {
                 errorMessage.value = request.errorBody().toString()
             } else {
-                errorMessage.value = null
+                errorMessage.value = request.body()?.message
+            }
+            try {
+                errorMessage.value = request.errorBody()?.let {
+                    GatewayApi.responseConverter.convert(it)?.message
+                }
+            } catch (e: Exception) {
+                errorMessage.value = e.message
             }
         } catch (e: Exception){
             Log.e("HomeUser", e.toString())
@@ -64,7 +85,14 @@ class HomeUserRepository {
             if (request.code() !in 200..299) {
                 errorMessage.value = request.errorBody().toString()
             } else {
-                errorMessage.value = null
+                errorMessage.value = request.body()?.message
+            }
+            try {
+                errorMessage.value = request.errorBody()?.let {
+                    GatewayApi.responseConverter.convert(it)?.message
+                }
+            } catch (e: Exception) {
+                errorMessage.value = e.message
             }
         } catch (e: Exception){
             Log.e("HomeUser", e.toString())
