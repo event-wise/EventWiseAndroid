@@ -13,6 +13,8 @@ class HomeEventsViewModel (
 
     private val _eventList = MutableLiveData<List<EventsModel>>()
 
+    val haveAnyEvent: MutableLiveData<Boolean> = MutableLiveData(false)
+
     init {
         refreshEventList()
     }
@@ -20,9 +22,10 @@ class HomeEventsViewModel (
     val eventList: LiveData<List<EventsModel>>
         get() = _eventList
 
-    private fun refreshEventList(){
+    fun refreshEventList(){
         viewModelScope.launch {
             _eventList.value = homeEventsRepository.listUserEvents()
+            haveAnyEvent.value = _eventList.value.orEmpty().isNotEmpty()
         }
     }
 }

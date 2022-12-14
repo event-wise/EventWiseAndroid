@@ -1,34 +1,29 @@
-package com.example.eventwise.screens.groupdetails
+package com.example.eventwise.screens.login
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.eventwise.models.GroupDetailsModel
+import com.example.eventwise.models.LoginRequestModel
+import com.example.eventwise.services.Constants
 import com.example.eventwise.services.GatewayApi
 
-class GroupDetailRepository {
+class LoginRepository {
 
-    suspend fun getGroupDetails(groupId: Long) : GroupDetailsModel? {
-        return try {
-            GatewayApi.gatewayService.getGroupDetails(groupId).body()
-        } catch (e: Exception){
-            Log.e("GroupDetail", e.toString())
-            null
-        }
-    }
-
-    suspend fun exitFromGroup(
+    suspend fun login(
         success: MutableLiveData<Boolean>,
         errorMessage: MutableLiveData<String>,
-        groupId: Long
-    ) {
+        username: String,
+        password: String
+    ){
         try {
-            val request = GatewayApi.gatewayService.exitFromGroup(groupId)
+            val request = GatewayApi.gatewayService.login(
+                LoginRequestModel(username, password)
+            )
+            Constants.BEARER_TOKEN = request.body()?.token.orEmpty()
+            Constants.GLOBAL_USER_ID = request.body()?.id ?: 0
+
             if (request.code() in 200..299) {
                 errorMessage.value = request.errorBody().toString()
-                success.value = request.body()?.success
-                if (success.value == false) {
-                    errorMessage.value = request.body()?.message.toString()
-                }
+                success.value = true
             } else {
                 success.value = false
                 errorMessage.value = request.errorBody().toString()
@@ -42,7 +37,7 @@ class GroupDetailRepository {
                 }
             }
         } catch (e: Exception) {
-            Log.e("GroupDetail", e.toString())
+            Log.e("Login", e.toString())
             errorMessage.value = "Something is wront with service!"
         }
     }

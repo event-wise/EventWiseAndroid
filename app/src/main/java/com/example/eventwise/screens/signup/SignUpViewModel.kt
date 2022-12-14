@@ -28,7 +28,8 @@ class SignUpViewModel(
                 username = username.value.orEmpty(),
                 email = email.value.orEmpty(),
                 location = location.value.orEmpty(),
-                password = password.value.orEmpty()
+                password = password.value.orEmpty(),
+                passwordConfirmation = passwordConfirmation.value.orEmpty()
             )
         }
     }

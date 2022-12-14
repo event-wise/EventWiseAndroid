@@ -13,6 +13,8 @@ import com.example.eventwise.databinding.FragmentHomeUserBinding
 import com.example.eventwise.screens.changepassword.ChangePasswordActivity
 import com.example.eventwise.screens.login.LoginActivity
 import com.example.eventwise.services.Constants
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 
 
 class HomeUserFragment : Fragment() {
@@ -43,6 +45,7 @@ class HomeUserFragment : Fragment() {
 
         binding.createEventActivitySaveButton.setOnClickListener {
             viewModel.updateProfileInformation()
+            binding.homeUserFragmentEditTextDisplayedUsername.clearFocus()
         }
 
         binding.createEventActivityLogOutButton.setOnClickListener {
@@ -53,7 +56,38 @@ class HomeUserFragment : Fragment() {
             requireActivity().finish()
         }
 
+        binding.createEventActivityDeleteAccountButton.setOnClickListener {
+            context?.let { it1 ->
+                MaterialAlertDialogBuilder(it1)
+                    .setMessage(resources.getString(R.string.sure_delete_account))
+                    .setNegativeButton(resources.getString(R.string.no)) { dialog, which ->
+                        dialog.dismiss()
+                    }
+                    .setPositiveButton(resources.getString(R.string.yes)) { dialog, which ->
+                        viewModel.deleteAccount()
+                        requireActivity().finish()
+                        startActivity(Intent(requireActivity(), LoginActivity::class.java))
+                    }
+                    .show()
+            }
+        }
+
+        viewModel.errorMessage.observe(requireActivity()) { error ->
+            if (error != null) {
+                Snackbar.make(binding.homeUserFragmentLayout, "", Snackbar.LENGTH_SHORT).also {
+                    it.setText(error)
+                    it.setTextMaxLines(10)
+                    it.show()
+                }
+            }
+        }
+
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.retrieveUserInformation()
     }
 
     companion object {

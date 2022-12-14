@@ -31,7 +31,20 @@ class HomeEventsFragment : Fragment() {
 
         binding.fragmentHomeEventsEventRecyclerView.adapter = EventsRecyclerViewAdapter()
 
+        viewModel.haveAnyEvent.observe(requireActivity()) {
+            if (it == true) {
+                binding.fragmentHomeEventsWarningTextView.visibility = View.GONE
+            } else {
+                binding.fragmentHomeEventsWarningTextView.visibility = View.VISIBLE
+            }
+        }
+
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.refreshEventList()
     }
 
     companion object {

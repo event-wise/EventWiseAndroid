@@ -39,11 +39,7 @@ class ActiveEventItemViewHolder private constructor(private val binding: Recycle
             val binding = RecyclerViewActiveEventItemBinding.inflate(layoutInflater, parent, false)
             binding.recyclerViewActiveEventItemLayout.setOnClickListener {
                 binding.eventItem?.id?.let { eventId ->
-                    binding.eventItem?.groupId?.let { groupId ->
-                        EventDetailActivity.newInstance(layoutInflater.context,
-                            eventId, groupId
-                        )
-                    }
+                    EventDetailActivity.newInstance(layoutInflater.context, eventId)
                 }
             }
             return ActiveEventItemViewHolder(binding)

@@ -12,6 +12,7 @@
     </data>
 
     <ScrollView
+        android:id="@+id/homeUserFragmentLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -63,7 +64,7 @@
                         android:background="@drawable/text_field_background_borderless"
                         android:layout_margin="@dimen/margin_medium"
                         android:inputType="text"
-                        android:text="@{viewModel.userModel.displayedName}"
+                        android:text="@={viewModel.displayedUsername}"
                         android:layout_gravity="center"
                         android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
                         android:paddingTop="@dimen/form_text_field_padding_vertical"
@@ -85,7 +86,7 @@
                         android:background="@drawable/text_field_background_borderless"
                         android:layout_margin="@dimen/margin_medium"
                         android:inputType="text"
-                        android:text="@{viewModel.userModel.location}"
+                        android:text="@={viewModel.location}"
                         android:layout_gravity="center"
                         android:paddingHorizontal="@dimen/form_text_field_padding_horizontal"
                         android:paddingTop="@dimen/form_text_field_padding_vertical"

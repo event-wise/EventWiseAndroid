@@ -13,6 +13,7 @@ class UpdateGroupViewModel(
     val groupName: MutableLiveData<String> = MutableLiveData<String>()
     val groupDescription: MutableLiveData<String> = MutableLiveData<String>()
     val groupLocation: MutableLiveData<String> = MutableLiveData<String>()
+    val groupOwner : MutableLiveData<Boolean> = MutableLiveData(true)
 
     val errorMessage: MutableLiveData<String> = MutableLiveData(null)
     val success: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -27,7 +28,7 @@ class UpdateGroupViewModel(
             groupName.value = groupDetails?.groupName.orEmpty()
             groupDescription.value = groupDetails?.description.orEmpty()
             groupLocation.value = groupDetails?.location.orEmpty()
-
+            groupOwner.value = groupDetails?.owner
         }
     }
 
@@ -41,6 +42,12 @@ class UpdateGroupViewModel(
                 groupName = groupName.value.orEmpty(),
                 groupId = groupId
             )
+        }
+    }
+
+    fun deleteGroup(){
+        viewModelScope.launch {
+            updateGroupRepository.deleteGroup(success, errorMessage, groupId)
         }
     }
 }

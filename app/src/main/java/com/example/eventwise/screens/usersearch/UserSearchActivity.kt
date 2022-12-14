@@ -2,15 +2,15 @@ package com.example.eventwise.screens.usersearch
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.eventwise.R
 import com.example.eventwise.databinding.ActivityUserSearchBinding
-import com.example.eventwise.screens.createevent.CreateEventActivity
-import com.example.eventwise.screens.groupdetails.GroupDetailActivity
+import com.google.android.material.snackbar.Snackbar
 
 class UserSearchActivity : AppCompatActivity() {
 
@@ -31,6 +31,8 @@ class UserSearchActivity : AppCompatActivity() {
 
         binding.viewModel = userSearchViewModel
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         userSearchViewModel.userFound.observe(this){
             binding.userSearchActivityFoundedPeopleLayout.visibility = if (it == true){
                  View.VISIBLE
@@ -40,7 +42,7 @@ class UserSearchActivity : AppCompatActivity() {
         }
 
         userSearchViewModel.isMember.observe(this){
-            binding.userSearchActivitySearchPeopleButton.text = if (it == true){
+            binding.activityUserSearchAddRemoveButton.text = if (it == true){
                 getString(R.string.remove_from_group)
             } else {
                 getString(R.string.add_to_group)
@@ -55,6 +57,38 @@ class UserSearchActivity : AppCompatActivity() {
             userSearchViewModel.addRemoveMember()
         }
 
+        userSearchViewModel.errorMessage.observe(this) { error ->
+            if (error != null) {
+                Snackbar.make(binding.userSearchActivityLayout, "", Snackbar.LENGTH_SHORT).also {
+                    it.setText(error)
+                    it.setTextMaxLines(10)
+                    it.show()
+                }
+            }
+        }
+
+        userSearchViewModel.success.observe(this) {
+            if (it == true){
+                finish()
+            }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (groupId == Long.MIN_VALUE){
+            finish()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     companion object {

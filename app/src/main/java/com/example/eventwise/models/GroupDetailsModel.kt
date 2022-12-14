@@ -7,5 +7,6 @@ data class GroupDetailsModel(
     var id: Long,
     var location: String,
     var logs: List<String>,
-    var members: List<String>
+    var members: List<String>,
+    var owner: Boolean
 )

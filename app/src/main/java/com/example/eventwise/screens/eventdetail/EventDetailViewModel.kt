@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.eventwise.helperfunctions.instantToDateConverter
 import com.example.eventwise.models.EventDetailsModel
 import com.example.eventwise.services.Constants
 import kotlinx.coroutines.launch
@@ -13,48 +14,53 @@ class EventDetailViewModel(
     private val eventDetailRepository: EventDetailRepository = EventDetailRepository()
 ) : ViewModel() {
 
+    val isDeleted: MutableLiveData<Boolean> = MutableLiveData(false)
+
     var eventDetail: MutableLiveData<EventDetailsModel> = MutableLiveData()
 
     val memberList: MutableLiveData<List<String>?> = MutableLiveData()
 
-    val eventName = Transformations.map(eventDetail){
-        eventDetail.value?.eventName
-    }
-    val eventDescription = Transformations.map(eventDetail){
-        "Description: " + eventDetail.value?.description
-    }
-    val eventLocation = Transformations.map(eventDetail){
-        "Location: " + eventDetail.value?.location
-    }
-    val eventTime = Transformations.map(eventDetail){
-        "Time: " + eventDetail.value?.dateTime
-    }
-    val eventType = Transformations.map(eventDetail){
-        "Type: " + eventDetail.value?.type
-    }
+    val eventName: MutableLiveData<String> = MutableLiveData()
+    val eventDescription: MutableLiveData<String> = MutableLiveData()
+    val eventLocation: MutableLiveData<String> = MutableLiveData()
+    val eventTime: MutableLiveData<String> = MutableLiveData()
+    val eventType: MutableLiveData<String> = MutableLiveData()
+
     val eventOwner : MutableLiveData<Boolean> = MutableLiveData(false)
+
+    val errorMessage: MutableLiveData<String> = MutableLiveData(null)
 
     init {
         retrieveEventDetail()
     }
 
-    private fun retrieveEventDetail(){
+    fun retrieveEventDetail(){
         viewModelScope.launch {
             eventDetail.value = eventDetailRepository.eventDetailInformation(eventId)
-            eventOwner.value = eventDetail.value?.organizerId == Constants.GLOBAL_USER_ID
-            memberList.value = eventDetail.value?.acceptedMembers
+            if (eventDetail.value == null){
+                isDeleted.value = true
+            }
+            eventName.value = eventDetail.value?.eventName.orEmpty()
+            eventDescription.value = "Description: " + eventDetail.value?.description.orEmpty()
+            eventLocation.value = "Location: " + eventDetail.value?.location.orEmpty()
+            eventTime.value = "Time: " + instantToDateConverter(eventDetail.value?.dateTime.orEmpty())
+            eventType.value = "Type: " + eventDetail.value?.type.orEmpty()
+            eventOwner.value = eventDetail.value?.organizer ?: false
+            memberList.value = eventDetail.value?.acceptedMembers ?: listOf()
         }
     }
 
     fun acceptEvent(){
         viewModelScope.launch {
-            eventDetailRepository.acceptEvent(eventId)
+            eventDetailRepository.acceptEvent(errorMessage, eventId)
+            retrieveEventDetail()
         }
     }
 
     fun rejectEvent(){
         viewModelScope.launch {
-            eventDetailRepository.rejectEvent(eventId)
+            eventDetailRepository.rejectEvent(errorMessage, eventId)
+            retrieveEventDetail()
         }
     }
 

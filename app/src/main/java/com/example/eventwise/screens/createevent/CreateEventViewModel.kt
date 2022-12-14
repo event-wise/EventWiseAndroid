@@ -3,6 +3,7 @@ package com.example.eventwise.screens.createevent
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.eventwise.helperfunctions.dateToInstantConverter
 import com.example.eventwise.models.EventSaveModel
 import kotlinx.coroutines.launch
 
@@ -28,8 +29,8 @@ class CreateEventViewModel(
                 EventSaveModel(
                     eventId = 0,
                     eventName = eventName.value.orEmpty(),
-                    dateTime = eventTime.value.orEmpty(),
-                    location = eventTime.value.orEmpty(),
+                    dateTime = dateToInstantConverter(eventTime.value.orEmpty()),
+                    location = eventLocation.value.orEmpty(),
                     type = eventType.value.orEmpty(),
                     description = eventDescription.value.orEmpty(),
                     groupId = groupId

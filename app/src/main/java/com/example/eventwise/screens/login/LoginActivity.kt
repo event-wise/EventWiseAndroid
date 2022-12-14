@@ -16,7 +16,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
 
-    private val loginActivityViewModel: LoginActivityViewModel by viewModels()
+    private val loginActivityViewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
             if (error != null) {
                 Snackbar.make(binding.loginActivityLayout, "", Snackbar.LENGTH_SHORT).also {
                     it.setText(error)
+                    it.setTextMaxLines(10)
                     it.show()
                 }
             }
@@ -39,6 +40,7 @@ class LoginActivity : AppCompatActivity() {
         loginActivityViewModel.success.observe(this) {
             if (it == true){
                 finish()
+                startActivity(Intent(this, HomeActivity::class.java))
             }
         }
 
