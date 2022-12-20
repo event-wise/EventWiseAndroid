@@ -30,7 +30,7 @@ class LoginRepository {
 
                 try {
                     errorMessage.value = request.errorBody()?.let {
-                        GatewayApi.errorConverter.convert(it)?.messages?.joinToString("\n")
+                        GatewayApi.responseConverter.convert(it)?.message
                     }
                 } catch (e: Exception) {
                     errorMessage.value = e.message

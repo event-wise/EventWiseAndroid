@@ -34,21 +34,21 @@ class HomeUserFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        binding.createEventActivityChangePasswordButton.setOnClickListener {
+        binding.homeUserFragmentChangePasswordButton.setOnClickListener {
             startActivity(Intent(requireActivity(), ChangePasswordActivity::class.java))
         }
 
-        binding.createEventActivityLogOutButton.setOnClickListener {
+        binding.homeUserFragmentLogOutButton.setOnClickListener {
             requireActivity().finish()
             startActivity(Intent(requireActivity(), LoginActivity::class.java))
         }
 
-        binding.createEventActivitySaveButton.setOnClickListener {
+        binding.homeUserFragmentSaveButton.setOnClickListener {
             viewModel.updateProfileInformation()
             binding.homeUserFragmentEditTextDisplayedUsername.clearFocus()
         }
 
-        binding.createEventActivityLogOutButton.setOnClickListener {
+        binding.homeUserFragmentLogOutButton.setOnClickListener {
             viewModel.logOut()
             Constants.BEARER_TOKEN = "Bearer token"
             Constants.GLOBAL_USER_ID = -1
@@ -56,7 +56,7 @@ class HomeUserFragment : Fragment() {
             requireActivity().finish()
         }
 
-        binding.createEventActivityDeleteAccountButton.setOnClickListener {
+        binding.homeUserFragmentDeleteAccountButton.setOnClickListener {
             context?.let { it1 ->
                 MaterialAlertDialogBuilder(it1)
                     .setMessage(resources.getString(R.string.sure_delete_account))

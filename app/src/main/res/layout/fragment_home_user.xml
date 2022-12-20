@@ -102,7 +102,7 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/createEventActivitySaveButton"
+                    android:id="@+id/homeUserFragmentSaveButton"
                     android:layout_width="@dimen/form_button_width"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_background"
@@ -115,7 +115,7 @@
                     app:backgroundTint="@color/secondary_color_scale1" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/createEventActivityChangePasswordButton"
+                    android:id="@+id/homeUserFragmentChangePasswordButton"
                     android:layout_width="@dimen/form_button_width"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_background"
@@ -128,7 +128,7 @@
                     app:backgroundTint="@color/secondary_color_scale2" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/createEventActivityLogOutButton"
+                    android:id="@+id/homeUserFragmentLogOutButton"
                     android:layout_width="@dimen/form_button_width"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_background"
@@ -141,7 +141,7 @@
                     app:backgroundTint="@color/secondary_color_scale1" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/createEventActivityDeleteAccountButton"
+                    android:id="@+id/homeUserFragmentDeleteAccountButton"
                     android:layout_width="@dimen/form_button_width"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_background"
