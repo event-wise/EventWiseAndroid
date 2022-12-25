@@ -11,7 +11,7 @@
     <string name="change_password">Şifre Değiştir</string>
     <string name="log_out">Oturumu Sonlandır</string>
     <string name="delete_account">Hesabı Sil</string>
-    <string name="displayed_username">Gerçek Kullanıcı İsmi</string>
+    <string name="displayed_username">Rumuz</string>
     <string name="member_situations">Üye durumları</string>
     <string name="event_description">Etkinlik Açıklaması</string>
     <string name="event_location">Etkinlik Konumu</string>
@@ -36,7 +36,7 @@
     <string name="sign_up">Üye Ol</string>
     <string name="login">Giriş</string>
     <string name="email">Email</string>
-    <string name="displayed_name">Gerçek İsim</string>
+    <string name="displayed_name">Rumuz</string>
     <string name="location">Konum</string>
     <string name="create_group">Group Oluştur</string>
     <string name="members">Üyeler</string>
@@ -56,4 +56,12 @@
     <string name="you_don_t_have_any_upcoming_events">Gelecek aktif etkinliğinizi bulunamadı!</string>
     <string name="you_haven_t_joined_any_groups_yet">Henüz herhangi bir gruba katılmadınız!</string>
     <string name="password_confirmation">Şifre (tekrar)</string>
+    <string name="eating">Yemek</string>
+    <string name="party">Parti</string>
+    <string name="sport">Spor</string>
+    <string name="music">Müzik</string>
+    <string name="entertainment">Eğlence</string>
+    <string name="visit">Ziyaret</string>
+    <string name="study">Çalışma</string>
+    <string name="travel">Gezi</string>
 </resources>
