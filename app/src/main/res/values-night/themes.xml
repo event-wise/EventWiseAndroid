@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.EventWise" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.EventWise" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary_color_scale1</item>
         <item name="colorPrimaryVariant">@color/primary_color_scale2</item>
