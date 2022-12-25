@@ -24,7 +24,11 @@ class LoginRepository {
             if (request.code() in 200..299) {
                 errorMessage.value = request.errorBody().toString()
                 success.value = true
-            } else {
+            } else if (request.code() == 401) {
+                errorMessage.value = "Wrong Password"
+                success.value = false
+            }
+            else {
                 success.value = false
                 errorMessage.value = request.errorBody().toString()
 
