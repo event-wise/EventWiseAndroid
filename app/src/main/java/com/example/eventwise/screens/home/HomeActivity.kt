@@ -47,8 +47,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val EVENTS_PAGE_INDEX = 0
-        private const val GROUPS_PAGE_INDEX = 1
+        private const val GROUPS_PAGE_INDEX = 0
+        private const val EVENTS_PAGE_INDEX = 1
         private const val USER_PAGE_INDEX = 2
 
 
@@ -62,8 +62,8 @@ private class HomeViewPagerAdapter(fragmentActivity: FragmentActivity) :
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> HomeEventsFragment.newInstance()
-            1 -> HomeGroupsFragment.newInstance()
+            0 -> HomeGroupsFragment.newInstance()
+            1 -> HomeEventsFragment.newInstance()
             else -> HomeUserFragment.newInstance()
         }
     }
