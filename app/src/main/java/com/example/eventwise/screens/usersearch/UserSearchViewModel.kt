@@ -31,6 +31,11 @@ class UserSearchViewModel(
             )
 
             userFound.value = searchResponseModel?.found
+
+            if (searchResponseModel?.found == false) {
+                errorMessage.value = "User is not found!"
+            }
+
             isMember.value = searchResponseModel?.member
             foundedUserName.value = searchResponseModel?.username
             userId = searchResponseModel?.id
