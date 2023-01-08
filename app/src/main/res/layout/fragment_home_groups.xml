@@ -49,7 +49,7 @@
             android:layout_margin="@dimen/margin_xlarge"
             android:layout_gravity="center"
             android:text="@string/create_group"
-            android:gravity="bottom"
+            android:gravity="bottom|center_horizontal"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_large"

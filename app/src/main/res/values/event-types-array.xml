@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="event_types">
-        <item>Sport</item>
-        <item>Music</item>
+        <item>@string/eating</item>
+        <item>@string/party</item>
+        <item>@string/sport</item>
+        <item>@string/music</item>
+        <item>@string/entertainment</item>
+        <item>@string/visit</item>
+        <item>@string/study</item>
+        <item>@string/travel</item>
     </string-array>
 </resources>

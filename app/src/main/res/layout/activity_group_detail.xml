@@ -183,7 +183,7 @@
                 android:id="@+id/groupDetailActivityAddRemoveButton"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/button_background"
                 android:layout_margin="@dimen/margin_small"
                 android:layout_gravity="center"
